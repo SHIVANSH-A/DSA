@@ -1,0 +1,36 @@
+DRY - Don't repeat yourself
+
+i)User defined
+define above the main(or from where the func is called) or declare it(proto).
+	return_type name(data_type para1,dt p2){
+		code
+	}
+
+call - func(para)
+
+ii)Standard library function
+	pow(a,b)
+	sqrt(a)
+
+remainder - parity
+presc - local var > global var
+:: opr - global ( cout<<::p)
+
+
+1)Call by-value (Parameters are copy)
+call - actual para/arguments
+fu(a,b)
+definiton - formal parameters/para
+fu(a,b) 
+
+2)Call by-reference(Parameters are actual var )
+call - fu(a,b)
+defin. - fu(&a,&b) 
+
+int p = 10
+int &q = p
+then q and p will have same address
+
+Note - Default para val
+fu(int a, int b=1)
+if at calling if val of b is not passed it will take it as 1 but only if val is not passed otherwise passed val will be taken.

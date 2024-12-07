@@ -1,0 +1,273 @@
+i) 
+**
+**
+**
+**
+
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    
+   for (int i=0;i<n;i++){
+       for(int j=0;j<m;j++){
+           cout<<'*';
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+
+ii)
+*****
+*   *
+*   *
+*****
+
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    
+   for (int i=0;i<n;i++){
+       for(int j=0;j<m;j++){
+           if(i==0 || j==0 || i==n-1 || j==m-1){
+            cout<<'*';
+           }
+           else{
+               cout<<" ";
+           }
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+iii)
+*****
+****
+***
+**
+*
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n;
+    
+   for (int i=0;i<n;i++){
+       for(int j=n-1;j>=i;j--){
+            cout<<'*';
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+or
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m; 
+    cin>>n;
+    
+   for (int i=0;i<n;i++){
+       for(int j=0;j<n-i;j++){
+            cout<<'*';
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+
+iv)
+    *
+   ***
+  *****
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n;
+    
+   for (int i=0;i<n;i++){
+       for(int k=0;k<n-i-1;k++){
+           cout<<" ";
+       }
+       for(int j=0;j<((2*i)+1);j++){
+            cout<<'*';
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+v)
+*****
+ ***
+  *
+    #include <bits/stdc++.h>
+    using namespace std;
+    
+    int main() {
+        int n,m;
+        cin>>n;
+        
+       for(int i=0;i<n;i++){
+           for(int k=0;k<i;k++){
+               cout<<" ";
+           }
+           for(int j=0;j<2*(n-i)-1;j++){
+                cout<<'*';
+           }
+           cout<<"\n";
+       }
+    
+        return 0;
+    }
+or
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n;
+    
+   for (int i=n;i>0;i--){
+       for(int k=0;k<n-i;k++){
+           cout<<" ";
+       }
+       for(int j=0;j<((2*i)-1);j++){
+            cout<<'*';
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+vi)
+1234
+2341
+3412
+4123
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    int count;
+    
+   for (int i=0;i<n;i++){
+       count=i;
+       for(int j=0;j<m;j++){
+            cout<<count+1;
+            if(count==m-1) count=0;
+            else count++;
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+or 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    int count;
+    
+   for (int i=0;i<n;i++){
+       for(int j=i;j<n;j++){
+            cout<<j+1;
+       }
+       for(int k=0;k<i;k++){
+            cout<<k+1;
+       }
+       cout<<"\n";
+   }
+
+    return 0;
+}
+
+vii)
+1212
+2121
+1212
+2121
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    int count;
+    
+   for (int i=0;i<n;i++){
+       for(int j=0;j<n;j++){
+            if((i+j)%2==0){
+                cout<<1;
+            }
+            else{
+                cout<<2;
+            }
+       }
+       
+       cout<<"\n";s
+   }
+
+    return 0;
+}
+
+viii)
+  1
+ 121
+12321
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n;
+    
+   for (int i=0;i<n;i++){
+       for(int k=0;k<n-i-1;k++){
+           cout<<" ";
+       }
+       
+        for(int s=0;s<i+1;s++){
+            cout<< s+1;
+        }
+        for(int e=i+1;e>1;e--){
+            cout<<e-1;
+            
+        }
+           cout<<"\n";
+   }
+
+    return 0;
+}
+
+
