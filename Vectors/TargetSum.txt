@@ -1,0 +1,143 @@
+i)Find the total number of pairs in the Array whose sum is equal to the given value x.
+keeping one ele constant and making pairs with others
+
+int array[]={1,6,4,3,7,0};
+int targetsum=7;
+int size=6;
+int pairs=0;
+for(int i=0;i<size;i++) {
+	for(int j=i+1;j<size;j++) {
+		if(array[i]+array[j]==targetsum) {
+		pairss++;
+			}
+	}
+}
+
+
+ii)Finding Triplet
+keeping two ele const and making triplet 
+int array[]={3,1,2,4,0,6};
+int targetsum=6;
+int size=6;
+int triplets=0;
+for(int i=0;i<size;i++) {
+	for(int j=i+1;j<size;j++) {
+		for(int k=j+1;k<size;k++) {
+			if(array[i]+array[j]+array [k]==targetsum) {
+			triplets++;
+			}
+		}
+	}
+}
+
+
+iii)Find the unique number in a given Array where all the elements are being repeated twice with one value being unique.
+Array manipulation
+
+int array[]={2,3,1,3,2,4,4,5,1};
+int size=9;
+for(int i=0;i<size;i++) {
+	for(int j=i+1;j<size;j++) {
+		if(array[i]==array[j]){
+		array[i]=array[j]=-1;
+		}
+	}
+}
+then check which is not -1
+
+iv)Finding second largest element
+a)Array manipulation
+int main ()
+{
+int array[]={2,3,5,7,6,1};
+int indexoflargest = largestElementIndex(array, 6);
+cout<<array [indexoflargest]<<endl;
+array [indexoflargest]=-1;
+int indexofsecondlargest = largestElementIndex(array,6);
+cout<<array [indexofsecondlargest]<<endl;
+return 0;
+}
+
+
+b)if duplicates are present
+int main ()
+{
+int array[]={2,3,5,7,6,1};
+int indexoflargest = largestElementIndex(array, 6);
+cout<<array [indexoflargest]<<endl;
+
+for(int i=0;i<6;i++){
+if(array[indexoflargst]==array[i]){
+array [i]=-1;
+}
+}
+
+int indexofsecondlargest = largestElementIndex(array,6);
+cout<<array [indexofsecondlargest]<<endl;
+return 0;
+}
+
+c)Using multiple variables
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // Write C++ code here
+    
+    int array[]={1,2,3,4,5,6,6,7};
+    int max=INT_MIN;
+    int secondmax=INT_MIN;
+    
+    for(int i=0;i<8;i++){
+        if(array[i]>max){
+            int temp = max;
+            max = array[i];
+            secondmax=temp;
+        }
+    }
+    
+    cout<<secondmax;
+
+    return 0;
+}
+
+
+v)Rotation of array by k times
+a)Using new array
+take k=k%n because k>n
+last k elements come to start and then after that other elements
+
+int ansarray [5];
+int j=0;
+//inserting last k elements in ans array
+for(int i=n-k; i<n; i++) {
+ansarray [j++]=array[i];
+}
+//inserting first n-k elements in ans array
+for(int i=0; i<=k; i++) {
+ansarray [j++]=array[i];
+}
+
+b)No extra mem(vector)
+NOTE- reverse(p1,p2) -> P1 is incl and p2 is excl
+k%=n
+reverse(v.begin(),v.end());
+reverse(v.begin(),v.begin()+k);
+reverse(v.begin()+k,v.end())
+
+vi)Finding a element is present in given array
+Frequency array
+
+const int N = 1e5 + 10;
+vector<int> freq(N,0);
+for(int i=0;i<n; i++) {
+freq [v[i]]++;
+}
+cout<<"Enter queries: ";
+int q;
+cin>>q;
+While(q-){
+int queryelement;
+cin>>queryelement;
+cout<<freq [queryelement]<<endl;

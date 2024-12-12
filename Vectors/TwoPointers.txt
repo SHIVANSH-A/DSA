@@ -1,0 +1,71 @@
+i)Sort array of 0 and 1
+a)Count no of 0 and make changes in original array such that 0 should be inserted then 1
+b)Two pointer
+swap the elements if lft=1 and rht=0(swap(v [left_ptr++],v[right_ptr--]))
+void sortZeroesAndOnes (vector<int> &v) {
+int left_ptr=0;
+int right_ptr=v.size()-1;
+while(left_ptr<right_ptr){
+	if (v[left_ptr]==1 && v[right_ptr]==0) {
+		swap(v [left_ptr++],v[right_ptr--]);
+	}
+	if (v[left_ptr]==0){
+		left_ptr++;
+	}
+	if (v [right_ptr]==1){
+		right_ptr--;
+	}
+
+}
+return;
+}
+
+ii)Given an array of integers 'a', move all the even integers at the beginning of the array followed by all the odd integers. The relative order of odd or even integers does not matter. Return any array that satisfies the condition.
+
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+void sortZeroesAndOnes (vector<int> &v) {
+int left_ptr=0;
+int right_ptr=v.size()-1;
+while(left_ptr<right_ptr){
+	if (v[left_ptr]%2!=0 && v[right_ptr]%2==0) {
+		swap(v [left_ptr++],v[right_ptr--]);
+	}
+	if (v[left_ptr]%2==0){
+		left_ptr++;
+	}
+	if (v[right_ptr]%2!=0){
+		right_ptr--;
+	}
+
+}
+return;
+}
+
+int main() {
+    vector<int> v = {0,0,2,3,4,56,7,4,3,5,4};
+    sortZeroesAndOnes(v);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    return 0;
+}
+
+iii)Given sorted array of integers sort their squares in non-decreasing order
+compare absolute values then swap
+void sortedSquaredArray(vector<int> &v){
+vector<int> ans;
+int left_ptr=0;
+int right_ptr=v.size()-1;
+while(left_ptr<right_ptr) {
+if(abs (v[left_ptr])<abs (v[right_ptr])){
+ans.push_back(v[right_ptr]*v [right_ptr]);
+right_ptr--;
+}
+else{
+ans.push_back(v[left_ptr]*v [left_ptr]);
+left_ptr++;
+}
+}
