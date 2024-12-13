@@ -1,0 +1,186 @@
+Recursion
+Stack space ->Recursion tree(only rep func as f() and traverse)
+1)For loop(i to n)Inc.
+f1(i,n){
+	if(i>n(max)){
+		return;
+	}
+	print(i);
+	f1(i+1,n);
+
+}
+
+Dec.
+f1(i,n){
+	if(i<1(min)){
+		return;
+	}
+	print(i);
+	f1(i-1,n);
+
+}
+2)Ways of Recursion
+Parameterized
+f1(i,para){
+	if(i<1(min)){
+		print(para);
+		return;
+
+	}
+	f1(i-1,para+i);//Calculating reqired output while passing para
+}
+
+Functional
+f1(para){
+	if(para==0){
+		
+		return 0;
+
+	}
+ 	return para + f1(para-1);//Waiting for another function to return something to 					get desired output 
+}
+2)Getting only one answer and all
+all
+f1(){
+(Base case){
+	if(cond. sat){
+		print;
+		return;	
+	}
+	return ;
+}
+
+(f1()) ;Check both cond of taking and not
+if(f1());
+return ;
+}
+Only One
+f1(){
+(Base case){
+	if(cond. sat){
+		return true;	
+	}
+	return false;
+}
+
+if(f1()) return true;//no need to check further case
+if(f1()) return true;//further case finds any answer then also no need to do further
+return false;
+}
+
+count
+f1(){
+(Base case){
+	if(cond. sat){
+		print;
+		return 1;	
+	}
+	return  0;
+}
+
+take =f1() ;Check both cond of taking and not
+nottake = f1();
+return take +nottake;
+}
+
+
+3)Problems
+i)Print i to n using backtracking
+use opp of conventional loop
+run loop backward and print after executing of func
+f(i,n){
+	if(i<1){
+		return;
+	}
+	f(i-1,n);
+	print(i);
+}
+
+ii)Print n to i using backtracking
+f(i,n){
+	if(i>n){
+		return;
+	}
+	f(i+1,n);
+	print(i);
+}
+iii)fact
+using inc loop
+int f(int i,int n){
+    if(i==n){
+        return n;
+    }
+    return i * f(i+1,n);
+}
+
+
+int main()
+{
+    cout<<f(1,5);
+
+    return 0;
+}
+
+
+using dec loop
+int f(int i){
+    if(i==1){
+        return i;
+    }
+    return i * f(i-1);
+}
+
+
+int main()
+{
+    cout<<f(5);
+
+    return 0;
+}
+
+iii)Sum of digits
+int f(int n) {
+// base case
+    if(n≤ 9 and n ≥ 0) return n;
+        return f(n / 10) + (n%10);
+}
+int main() {
+    int result = f(653);
+    cout<<result;
+    return 0;
+}
+
+iv)p^q
+int power(int p,int q){
+    if(q<1){
+        return 1;
+    }
+    
+    return  power(p,q-1) * p;
+}
+
+
+int main() {
+    int result = power(2,3);
+    cout<<result;
+    return 0;
+}
+or
+int f(int p, int q) {
+	//base case
+	if(q= 0) return 1;
+	if(q%2= 0) {
+		// if q is even
+		int result = f(p, q/2);
+		return result result;
+	} else {
+		// if q is odd
+		int result = f(p, (q 1) / 2);
+		return p result result;
+}
+}
+int main() {
+	int res f(3, 4);
+	cout<<res;	
+	return 0;
+}
