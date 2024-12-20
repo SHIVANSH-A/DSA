@@ -1,0 +1,76 @@
+1)HASHING 
+prestoring/fetching
+i)prestoring -> Making freq array(Take max no that can come and make array of that size now iterate over array and chech of every element of array and inc val in hash array by 1 whenever any ele comes in array).
+
+ii)fetching -> hash[ele] will give freq in o(1)
+
+(Prev if o(q x n ) now o(n))
+
+Max array size -
+int - main - 10^6
+      globally - 10^7
+bool - main - 10^7
+       globally - 10^8 
+
+ex->
+int main() {
+int n;
+cin >> n;
+int arr[n];
+for(int i=0;i<n;i++) {
+cin >> arr[i];
+}
+// precompute
+int hash [max+1] = {0};
+for(int i=0;i<n; i++) {
+hash [arr[i]] += 1;
+}
+int q;
+cin >> q;
+while(q--) {
+int number;
+cin >> number;
+// fetch
+cout << hash [number] <<< endl;
+}
+return 0;
+
+character freq array
+Take max size -256
+
+// precompute
+if only upper or lower case letters
+for(int i=0;i<n; i++) {
+hash [arr[i]-'a'] += 1;
+}
+
+
+// precompute
+for(int i=0;i<n; i++) {
+hash [arr[i]] += 1;
+}
+
+
+2)Maps
+For greater numbers
+as here you can store any data type and only take space as of those numbers have freq non 0
+map<key,value> name
+
+i)map(stores in sorted order,key - any datatype like pair)
+map<int, int> mpp;
+for(int i=0;i<n;i++) {
+cin >> arr[1];
+mpp[arr[i]]++;
+}
+Time  - best,avg,worst - o(logn) (n-no of keys)
+
+ii)Unordered map(key - individual datatype)
+unordered_map<int, int> mpp;
+for(int i=0;i<n;i++) {
+cin >> arr[1];
+mpp[arr[i]]++;
+}
+
+Time  - best,avg - o(1) , worst - o(n) (n-no of keys)
+
+access of element - mpp[index].first(key) , mpp[index].second(val) or mpp[index]

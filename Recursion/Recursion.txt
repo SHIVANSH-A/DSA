@@ -172,15 +172,49 @@ int f(int p, int q) {
 	if(q%2= 0) {
 		// if q is even
 		int result = f(p, q/2);
-		return result result;
+		return result*result;
 	} else {
 		// if q is odd
-		int result = f(p, (q 1) / 2);
-		return p result result;
+		int result = f(p, (q-1) / 2);
+		return p result*result;
 }
 }
 int main() {
 	int res f(3, 4);
 	cout<<res;	
 	return 0;
+}
+v)reversing an array
+#include<bits/stdc++.h>
+using namespace std;
+void f(int i, int arr[], int n) {
+	(i >= n/2) return; or (l>=r)
+	swap(arr[i], arr[n-i-1]);or swap(a[l],a[r])
+	f(i+1, arr, n);or(l+1,r-1)
+	}
+
+int main() {
+int n;
+cin >> n;
+int arr[n];
+for (int i=0;i<n;i++) cin >> arr[i];
+f(e, arr, n);
+for(int i = 0; i<n;i++) cout << arr[i] <<" ";
+return 0;
+
+}
+
+vi)Palindrome
+#include<bits/stdc++.h>
+using namespace std;
+bool f(int i, string &s) {
+    if(i >= s.size() / 2) return true;
+    if(s[i] != s[s.size()-i-1]) return false;
+    return f(i+1, s);
+}
+int main() {
+
+    string s = "mam";
+    cout << f(0, s);
+return 0;
 }
