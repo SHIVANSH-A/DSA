@@ -5,3 +5,5 @@ int f(int n) {
 	int slast = f(n-2);
 	return last + slast;
 }
+
+here multiple recursion calls are used to get the output
