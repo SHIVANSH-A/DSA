@@ -141,6 +141,68 @@ void deleteDupl(Node* &head){
         }
     }
 }
+iv)Reverse
+a)Print in reverse
+void reversePrint(Node* &head){
+    if(head==NULL){
+        return;
+    }
+    reversePrint(head->next);
+    cout<<head->val<<"->";
+}
+b)Reversal
+Node* reverseLL (Node* &head) {
+    Node* prevptr = NULL;
+    Node* currptr = head;
+    //currptr->next = prevptr;
+    // move all 3 ptrs by one step ahead
+    while(currptr!=NULL) {
+    Node* nextptr = currptr->next;
+    currptr->next = prevptr;
+    prevptr = currptr;
+    currptr = nextptr;
+    }
+    //when this loop ends, prevptr pointing to my last node which is new head
+    Node* new_head = prevptr;
+    return new_head;
+    
+}
+
+
+Node* reverseLLRecursion (Node* &head) {
+//base case
+    if (head= NULL || head->next==NULL)
+    return head;
+    //recursive case
+    Node* new_head = reverseLLRecursion (head->next);
+    head->next->next = head;
+    head->next = NULL; //head is now pointing to last node in reversed ll
+    return new_head;
+}
+C)K at a time
+ex: 1->2->3->4
+2->1->4->3
+reverse k nodes then recursion call for the remaining
+
+Node* reverseK(Node* &head,int k){
+    Node* prevptr = NULL;
+    Node* currptr = head;
+    int counter = 0; //for counting first k nodes
+    while(currptr!=NULL && counter<k) { //reversing first k nodes
+        Node* nextptr = currptr->next;
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
+        counter++;
+    }
+    //currptr will give us (k+1)th node
+    if(currptr!=NULL) {
+        Node* new_head = reverseK(currptr,k); //recursive call
+        head->next = new_head;
+    }
+    return prevptr; //prevptr will give the new_head of connected linkedlists
+    
+}
 int main() {
     Node* head = NULL;
     insertAtHead (head, 2);
