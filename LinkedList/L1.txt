@@ -117,6 +117,30 @@ void deleteNode(Node* &head,int pos){
         free(del);
     }
 }
+d)Alternate nodes
+void deleteAlt(Node* &head){
+    Node* curr = head;
+    while(curr!=NULL && curr->next!=NULL){
+        Node* temp = curr->next;
+        curr->next = temp->next;
+        free(temp);
+        curr = curr->next;
+    }
+}
+e)Given sorted LinkedList delete duplicate elements
+void deleteDupl(Node* &head){
+    Node* curr = head;
+    while(curr->next!=NULL){
+        if(curr->val==curr->next->val){
+            Node* temp = curr->next;
+            curr->next=temp->next;
+            free(temp);
+        }
+        else{
+            curr=curr->next;
+        }
+    }
+}
 int main() {
     Node* head = NULL;
     insertAtHead (head, 2);
