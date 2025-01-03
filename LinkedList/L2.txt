@@ -1,0 +1,133 @@
+1)Check two LL are equal
+bool isEqual(Node* &head1,Node* &head2){
+    Node* p1 = head1;
+    Node* p2 = head2;
+    
+    bool flag= true;
+    
+    while(p1!=NULL && p2!=NULL){
+        if(p1->val != p2->val){
+            flag = false;
+            break;
+        }
+        else{
+            p1=p1->next;
+            p2=p2->next;
+        }
+        
+    }
+    
+    return flag;
+    
+}
+
+2)Check intersection of LL (we can use set)
+Node* moveHeadByK (Node* head, int k) {
+    Node* ptr = head;
+    while(k--){
+        ptr=ptr->next;
+    }
+    return ptr;
+}
+int getLength(Node* head) {
+    Node* temp = head;
+    int length =0;
+    while(temp!=NULL) {
+        length++;
+        temp=temp->next;
+    }
+    
+    return length;
+}
+Node* getIntersection (Node head1, Node* head2) {
+    //stepl: calculate lengths of both linked lists
+    int 11 = getLength (head1);
+    int 12 getLength (head2);
+    //step2: find difference k between linkedlist and move longer ptr by k
+    Node* ptr1, ptr2;
+    if(l1>12){ //LL1 is longer
+        int k = 11-12;
+        ptr1 = moveHeadByK (head1,k);
+        ptr2 = head2;
+    }
+    else{ //LL2 is longer
+        int k = 12-11;
+        ptr1 = head1;
+        ptr2 = moveHeadByK(head2,k);
+    }
+    //step3: check for intersection
+    while(ptr1){
+        if(ptr1==ptr2){
+            return ptr1
+        }
+    }
+    return NULL;
+}
+3)Delete kth node from end
+1->2->3->4->5->NULL
+   p1<-------->p2
+	k
+void removeKthNodeFromEnd (Node* &head, int k){
+    Node* ptr1 = head;
+    Node* ptr2 = head;
+    //move ptr2 by k steps ahead
+    int count = k;
+    while(count--){
+    ptr2=ptr2->next;
+    }
+    if(ptr2==NULL){ //k is equal to length of linked list
+			// we have to delete head node
+	Node* temp = head;
+	head = head->next;
+	free(temp);
+	return;}
+    // now ptr2 is k steps ahead of ptr1
+    //when ptr2 is at null (end of list), ptr1 will be at node to be deleted
+    while(ptr2->next!=NULL){
+    ptr1=ptr1->next;
+    ptr2=ptr2->next;
+    }
+    //now ptr1 is pointing to the node before kth node from end
+    // node to be deleted is ptr1->next
+    Node* temp = ptr1->next;
+    ptr1->next = ptr1->next->next;
+    free(temp);
+}
+
+4)Given 2 sorted linked lists, merge them into 1 singly linked list such that the resulting list is also sorted.
+Node* mergeSortedLL(Node* head1,Node* head2){
+    Node* dummyHeadNode = new Node(-1);
+    Node* ptr1 = head1;
+    Node* ptr2 = head2;
+    Node* ptr3 = dummyHeadNode;
+    I
+    while(ptr1 && ptr2) {
+        if(ptr1->val < ptr2->val) {
+        ptr3->next = ptr1;
+        ptr1=ptr1->next;
+        }
+        else{
+        ptr3->next = ptr2;
+        ptr2=ptr2->next;
+        }
+        ptr3=ptr3->next;
+    }
+    
+    if(ptr1){
+        ptr3->next=ptr1;
+    }else{
+        ptr3->next=ptr2;
+    }
+    return dummyHeadNode->next;
+}
+5)You are given an array of k linked-lists lists, each linked-list is sorted in ascending order. Merge all the linked-lists into one sorted linked-list and return it.
+Node* mergeKLinkedList(vector<Node* > &lists){
+
+    while(lists.size()>1){
+        Node* mergedHead = mergeSortedLL (lists[0], lists [1]);
+        lists.push_back(mergedHead);
+        lists.erase(lists.begin());
+        lists.erase (lists.begin());
+        }
+    return lists [0];
+}
