@@ -131,3 +131,254 @@ Node* mergeKLinkedList(vector<Node* > &lists){
         }
     return lists [0];
 }
+
+
+
+DOUBLY LINKED LIST
+ PREV | VALUE | NEXT
+
+HEAD - PREV-> NULL
+TAIL - NEXT-> NULL
+
+#include <bits/stdc++.h>
+using namespace std;
+class Node{
+	public:
+	int val;
+	Node* prev;
+	Node* next;
+	Node(int data) {
+		val =data;
+		prev = NULL;
+		next = NULL;
+	}
+};
+
+class DoublyLinkedList{
+public:
+	Node* head;
+	Node* tail;
+	DoublyLinkedList(){
+		head = NULL; 
+		tail = NULL;
+}
+	void insertAtHead(int val){
+		Node* new_node = new Node(val);
+		if(head==NULL){
+			head = new_node;
+			tail = new_node;
+			return;
+		}
+		new_node->next=head;
+		head->prev=new_node;
+		head=new_node;
+	}
+	
+	void insertAtTail(int val){
+	    Node* new_node = new Node(val);
+	    if(head==NULL){
+			head = new_node;
+			tail = new_node;
+			return;
+		}
+		new_node->prev = tail;
+		tail->next = new_node;
+		tail=new_node;
+	}
+	
+	void insertAtK(int val,int k){
+	    Node* new_node = new Node(val);
+	    Node* temp=head;
+	    int count = 1;
+	    while(count<k-1){
+	        temp=temp->next;
+	        count++;
+	    }
+		temp->next->prev = new_node;
+		new_node->next = temp->next;
+		temp->next=new_node;
+		new_node->prev=temp;
+		
+		
+	}
+	
+	void deleteAtStart(){
+        if (head==NULL) {
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        if (head==NULL) { //if doubly linked list had only 1 node
+            tail = NULL;
+        }else{
+            head->prev = NULL;
+        }
+        free(temp);
+}
+	void deleteAtEnd(){
+        if (tail==NULL) {
+            return;
+        }
+        Node* temp = tail;
+        tail = tail->prev;
+        if (tail==NULL) { //if doubly linked list had only 1 node
+            head = NULL;
+        }else{
+            tail->next = NULL;
+        }
+        free(temp);
+}
+	void deleteAtK(int k){
+        
+        Node* temp = head;
+        int count =1;
+        while(count<k){
+            temp=temp->next;
+            count++;
+        }
+        //Now temp is at kth Node
+        temp->prev->next=temp->next;
+        temp->next->prev=temp->prev;
+        free(temp);
+}
+	
+	
+	void display(){
+	    Node* temp = head;
+	    while(temp!=NULL){
+	        cout<<temp->val<<"<->";
+	        temp=temp->next;
+	    }cout<<endl;
+	}
+};
+
+
+int main(){
+    
+    DoublyLinkedList dll;
+    dll.insertAtHead(5);
+    dll.insertAtHead(3);
+    dll.insertAtTail(4);
+    dll.insertAtTail(2);
+    dll.insertAtK(6,2);
+    dll.display();
+    dll.deleteAtStart();
+    dll.deleteAtEnd();
+    dll.deleteAtK(2);
+    dll.display();
+    
+}
+
+
+
+
+1)Reversal
+void reverseDll(Node* &head, Node* &tail)
+	Node* currPtr = head;
+	while(currPtr) {
+		Node* nextPtr = currPtr->next;
+		currPtr->next = currPtr->prev;
+		currPtr->prev = nextPtr;
+		currPtr = nextPtr;
+	}
+	Node* newHead = tail;
+	tail = head;
+	head = newHead;
+}
+
+
+2)Palindrome
+bool isPalindromeDLL (Node* head, Node* tail)
+while(head!=tail && tail!=head->prev) {
+if (head->val!=tail->val) {
+return false;
+}
+head-head->next;
+tail=tail->prev;
+}
+return true;
+}
+
+3)Traversing from the tail delete node with same neighbours
+void deleteSameNeighbourNode (Node* &head, Node* &tail){
+    Node* currNode = tail->prev; //second last node
+    while(currNode!=head){
+        Node* prevNode = currNode->prev;
+        Node* nextNode = currNode->next;
+    
+        if (prevNode->val==nextNode->val) {
+        // i need to delete the curr node
+            prevNode->next = nextNode;
+            nextNode->prev = prevNode;
+            free(currNode);
+        }
+        currNode = prevNode;
+    }
+
+}
+
+4)Find min and max dist bet CP in LL
+bool isCP(Node* &currNode){
+    if(currNode->val<currNode->prev->val && currNode->val<currNode->next->val){
+        return true;
+    }
+    if(currNode->val>currNode->prev->val && currNode->val>currNode->next->val){
+        return true;
+    }
+    return false;
+    
+}
+vector<int> DistBetCriticalPts(Node* head,Node* tail){
+     vector<int> ans(2,INT_MAX);
+     int firstpos=-1,lastpos=-1;
+     Node* currNode = tail->prev;
+     
+     if(currNode==NULL){
+         ans[0]=ans[1]=-1;
+         return ans;
+     }
+     
+     int currpos=0;
+     while(currNode->prev!=NULL){
+         if(isCP(currNode)){
+             if(firstpos==-1){
+                 lastpos=firstpos=currpos;
+             }else{
+                 ans[0]=min(ans[0],currpos-lastpos);
+                 ans[1]=currpos-firstpos;
+                 lastpos=currpos;
+             }
+         }
+             currpos++;
+             currNode=currNode->prev;
+     }
+     if(ans[0]==INT_MAX){
+          ans[0]=ans[1]=-1;
+            return ans;
+     }
+     
+     return ans;
+     
+}
+5)Find pair with target sum(using two pointer and LL is sorted)
+vector<int> findPair(Node* head,Node* tail,int t){
+    vector<int> ans(2,-1);
+    int sum = 0;
+    
+    while(head!=tail){
+        sum = head->val + tail->val;
+        if(sum==t){
+            ans[0]=head->val;
+            ans[1]=tail->val;
+            return ans;
+        }
+        
+        if(sum>t){//if we increment head then we will get greater sum so dec tail
+            tail=tail->prev;            
+        }
+        else{
+            head=head->next;
+        }
+    }
+    return ans;
+}
