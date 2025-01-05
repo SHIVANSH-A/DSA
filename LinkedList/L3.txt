@@ -1,0 +1,145 @@
+Circular Linked List
+(Can be singly or doubly) tail->next = head;
+			  head->prev=tail;
+
+Advantages-
+1)We can traverse starting from any node and stops when we encounter any visited node
+2)When we need traversal in circular fashion(tail to head).
+
+#include <bits/stdc++.h>
+using namespace std;
+class Node{
+	public:
+	int val;
+	Node* prev;
+	Node* next;
+	Node(int data) {
+		val =data;
+		prev = NULL;
+		next = NULL;
+	}
+};
+
+class CircularLinkedList{
+    public:
+    Node* head;
+    
+    CircularLinkedList(){
+        head=NULL;
+    }
+    void insertAtStart(int val){
+
+        Node *new_node = new Node(val);
+        if (head ==NULL)
+        {
+            head = new_node;
+            new_node->next = head; // circular linked list
+            return;
+        }
+        Node* tail = head;
+        while(tail->next != head) {
+            tail=tail->next;
+        }
+        //now tail is pointint to the last node
+        tail->next = new_node;
+        new_node->next = head;
+        head = new_node;
+    }
+    void insertAtEnd(int val){
+
+        Node *new_node = new Node(val);
+        if (head ==NULL)
+        {
+            head = new_node;
+            new_node->next = head; // circular linked list
+            return;
+        }
+        Node* tail = head;
+        while(tail->next != head) {
+            tail=tail->next;
+        }
+        //now tail is pointint to the last node
+        tail->next = new_node;
+        new_node->next = head;
+    }
+    void insertAtK(int val,int k){
+
+        Node *new_node = new Node(val);
+        if (head ==NULL)
+        {
+            head = new_node;
+            new_node->next = head; // circular linked list
+            return;
+        }
+        Node* temp = head;
+        int count = 1;
+        while(count<k-1) {
+            temp=temp->next;
+        }
+        //now tail is pointing to the k-1 node
+       new_node->next=temp->next;
+       temp->next=new_node;
+    }
+    void deleteAtStart(){
+        if (head==NULL) {
+            return;
+        }
+        Node* temp = head;
+        Node* tail = head;
+        while(tail->next!=head) {
+            tail-tail->next;
+        }
+        head =head->next;
+        tail->next = head;
+        free(temp);
+    }
+    void deleteAtEnd(){
+        if (head==NULL) {
+            return;
+        }
+        // Node* temp = head;
+        Node* tail = head;
+        while(tail->next->next!=head) {
+            tail=tail->next;
+        }
+        Node* temp = tail->next;
+        tail->next=head;
+        free(temp);
+    }
+    void deleteNode(Node* &head,int pos){
+        Node* temp = head;
+        int curr = 1;
+        if(pos==1){
+            deleteAtStart();
+        }
+        else{
+            while(curr!=pos-1){
+                temp=temp->next;
+                curr++;
+            }
+            Node* del = temp->next;
+            temp->next=del->next;
+            free(del);
+    }
+}
+    void display(){
+	    Node* temp = head;
+	    do{
+	        cout<<temp->val<<"->";
+	        temp=temp->next;
+	    }while(temp!=head);
+	    cout<<endl;
+	}
+};
+
+int main(){
+    CircularLinkedList cll;
+    cll.insertAtStart(1);
+    cll.insertAtStart(2);
+    cll.insertAtStart(3);
+    cll.insertAtStart(4);
+    cll.insertAtEnd(5);
+    cll.insertAtK(6,2);
+    cll.display();
+    return 0;
+}
