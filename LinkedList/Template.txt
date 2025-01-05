@@ -1,0 +1,94 @@
+*Template class
+Allows to pass data type as variables
+
+template <typename T>
+class Node{
+	public:
+	T val;
+	Node* prev;
+	Node* next;
+	Node(T data) {
+		val =data;
+		next = NULL;
+	}
+};
+int main(){
+	Node<int>* node = new Node<int>(3);
+	cout<<node->val;
+	return 0;
+}
+
+
+*STL(Standard template lib)
+Set of templ classes for imlementing comomomly ised ds adn fun.
+
+Components
+i)Containers(Used to hold data of same type)
+vector->classs defines dyna arrays
+list->class for doubly ll
+map->unique key-value pairs
+set->unique val
+
+ii)Iterators
+pointer like entities to traverse container
+ex- vector<int>::iterator itr;
+itr.begin();
+
+iii)Algorithms
+functions that are used to manipulate data in the containers
+ex- sort(v.begin(),v.end())
+min(a,b)
+max(a,b)
+
+*LIST
+Template class in STL for imple dll
+list<data_type> name;
+list<dt> l1{1,2,3,4} or list<dt> l1={1,2,3,4}
+
+1)functions-
+list.begin() -> iterator for the first element
+list.end() -> iterator for the position after last element
+for reverse rbegin(),rend()
+advance(itr,n)->move itr by n places
+push_front(val)
+pop_front()
+push_back(val)
+pop_back()
+
+ex-list<int> li = {1,2,3,4};
+    auto itr= li.begin();
+    //11.end() iterator pointing to the memory location after
+    cout<<*itr<<endl;
+    // auto rev_itr= 1i.rbegin();
+    // cout<<*rev_itr<<endl;
+    //11.rend() iterator pointing to the memory location after
+    advance(itr, 2);
+    cout<<*itr<<endl;
+
+2)Traversal
+i)using range bassed loop
+for(auto num:li){
+ cout<<num<<" ";
+}
+
+ii)Using iterators
+//using iterators
+for(auto itr li.begin(); itr!=l1.end(); itr++){
+cout<<*itr<<" ";}
+cout<<endl;
+//reverse traversal
+for(auto itr 11.rbegin(); itr!=ll.rend(); itr++){
+cout<<*itr<<" ";}
+cout<<endl;
+
+3)Insertion
+i)list.insert(itr,value) ->insert val before the pos of the itr
+ii)list.insert(itr,count,value) ->insert val count no. of times before itr
+ii)list.insert(itr,itrstart,itrend) ->insert values between two itr.s(excluding end) between these itr.s
+
+4)Deletion
+i)list.erase(itr)->del the ele pointed by the itr
+ii)list.erase(itrstart,itrend)->delete elements between these itr(excluding end).
+
+
+
