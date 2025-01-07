@@ -1,0 +1,123 @@
+1)Copy stack(use 3 stack)
+#include<bits/stdc++.h>
+using namespace std;
+
+
+stack<int> copyStack(stack<int> &input) {
+    stack<int> temp;
+    while(!input.empty()) {
+    // do the process till the time input stack doesn't become emoty
+        int curr =  input.top(); //[, curr= 1
+        input.pop();
+        temp.push(curr); // [3, 2, 1]
+    }
+    stack<int> result;
+    while(not temp.empty()) {
+        int curr = temp.top();
+        temp.pop();
+        result.push(curr);
+}
+    return result;
+}
+
+int main(){
+    
+    
+    stack<int> st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    stack<int> res = copyStack(st);
+    while(not res.empty()) {
+        int curr = res.top();
+        res.pop();
+        cout<<curr<<"\n";
+    }
+
+    return 0;
+}
+
+//recursion
+void f(stack<int> &st, stack<int> &result) {
+    if(st.empty()) return;
+    int curr=st.top();
+    st.pop();
+    f(st, result);
+    result.push(curr);
+}
+
+
+
+2)Insert at bottom/any index
+i)Iterative
+use two stacks pop from one then push to another then add x after that again push to ori. stack
+any index - pop until (count < n-idx) (n-idx->how many no popped) then same
+
+ii)Recursive
+void f(stack<int> &st,int x){
+	if(st.empty()){
+		st.push(x);
+		return;
+	}
+	int curr = st.top();
+	st.pop();
+	f(st,x); 
+	st.push(curr);
+}
+void f(stack<int> &st, int x, int idx) {
+    if (idx == 0) {
+        st.push(x);
+        return;
+    }
+
+    // Base case: Stop recursion if stack is empty
+    if (st.empty()) {
+        return;
+    }
+
+    int curr = st.top();
+    st.pop();
+    f(st, x, idx - 1);  // Recur for the next position
+    st.push(curr);      // Restore the stack
+}
+
+3)Remove at bottom/any index
+i)Iterative
+only change count<n-index-1
+
+ii)Recursion
+void f(stack<int> &st) {
+	if(st.size()==1){
+		st.pop();
+		return;
+	}
+	int curr=st.top();
+	st.pop();
+	f(st);
+	st.push(curr);
+}
+
+
+void f(stack<int> &st,int idx) {
+	if(st.size()==idx+1){
+		st.pop();
+		return;
+	}
+	int curr=st.top();
+	st.pop();
+	f(st,idx);
+	st.push(curr);
+}
+
+4)Reverse stack
+i)Use two temp stack
+ii)void f(stack<int> &st){
+	if(st.empty()){
+		return;}
+	int curr = st.top();
+	st.pop();
+	f(st);
+	insertAtBottom(st,curr);
+}
+

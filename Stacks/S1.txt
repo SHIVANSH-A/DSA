@@ -1,0 +1,152 @@
+Stacks
+LIFO - Always remove the element which comes last
+Functions - push,pop,isEmpty,isFull,size,top
+Overflow-when max elements are pushed
+Underflow-when no ele can popped
+
+1)Stacks using arrays
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class Stack {
+    int capacity;
+    int* arr;
+    int top;
+    public:
+    Stack(int c) {
+        this->capacity = c;
+        arr = new int[c];
+        this->top = -1;
+    }
+    void push(int data) {
+        if(this->top==this->capacity - 1) {
+            cout<<"Overflow\n";
+            return;
+    }
+        this->top++;
+        this->arr[this->top] = data;
+    }
+    
+    void pop(){
+        if(this->top == -1) {
+        cout<<"Underflow\n";
+        return ;
+        }
+        this->top--;
+    }
+    int gettop() {
+        if(this->top == -1) {
+        cout<<"Underflow\n";
+        return INT_MIN;
+        }
+        return this->arr[this->top];
+    }
+    bool isEmpty() {
+        return this->top == -1;
+    }
+    int size() {
+        return this->top + 1;
+    }
+    bool isFull() {
+        return this->top==this->capacity - 1; 
+    }
+};
+
+
+int main(){
+    Stack st(5);
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    st.pop();
+    st.push(5);
+    st.push(6);
+    st.push(8);
+    
+    cout<<st.gettop()<<" ";
+    return 0;
+}
+
+2)Using LL
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class Node {
+    public:
+    int data;
+    Node* next;
+    Node(int data){
+        this->data=data;
+        next=NULL;
+    }
+    };
+    
+class Stack {
+    Node* head;
+    int capacity;
+    int currSize;
+    public:
+    Stack(int c) {
+        this->capacity = c;
+        this->currSize = 0;
+        head = NULL;
+    }
+    bool isEmpty() {
+        return this->head == NULL;
+    }
+    bool isFull(){
+        return this->capacity==this->currSize;
+    }
+    void push(int data) {
+        if(this->currSize == this->capacity) {
+            cout<<"Overflow";
+            return;
+        }
+        Node* new_node = new Node(data);
+        new_node->next = this->head;
+        this->head = new_node;
+        this->currSize++;
+    }
+    int pop(){
+        if(head==NULL){
+            cout<<"Underflow"<<" ";
+            return INT_MAX;
+        }
+        Node* temp = head;
+        head = head->next;
+        int r = temp->data;
+        free(temp);
+        currSize--;
+        return r;
+    }
+    int gettop(){
+        if(head==NULL){
+            cout<<"Underflow"<<" ";
+            return INT_MAX;
+        }
+        return head->data;
+    }
+};
+
+int main(){
+    Stack st(5);
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    st.pop();
+    st.push(5);
+    st.push(6);
+    
+    cout<<st.gettop()<<" ";
+    return 0;
+}
+
+3)Stack STL
+stack<int> st;
+
+functions - st.push(data)
+	    st.pop(),st.top(),st.empty();
