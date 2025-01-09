@@ -1,5 +1,5 @@
 (Arrays are always passed by ref but if vectors are passed without & then pass by value)
-Diff of elements at even and odd
+i)Diff of elements at even and odd
 // Online C++ compiler to run C++ program online
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,5 +17,69 @@ int main() {
    }
    cout<<sum;
 
+    return 0;
+}
+
+
+ii)Consider an -element array, , where each index  in the array contains a reference to an array of  integers (where the value of  varies from array to array). See the Explanation section below for a diagram.
+
+Given , you must answer  queries. Each query is in the format i j, where  denotes an index in array  and  denotes an index in the array located at . For each query, find and print the value of element  in the array at location  on a new line.
+
+Click here to know more about how to create variable sized arrays in C++.
+
+Input Format
+
+The first line contains two space-separated integers denoting the respective values of  (the number of variable-length arrays) and  (the number of queries).
+Each line  of the  subsequent lines contains a space-separated sequence in the format k a[i]0 a[i]1 … a[i]k-1 describing the -element array located at .
+Each of the  subsequent lines contains two space-separated integers describing the respective values of  (an index in array ) and  (an index in the array referenced by ) for a query.
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int n,q;
+    cin>>n>>q;
+    vector<vector<int>> v(n);
+    for(int i=0;i<n;i++){
+        int m;
+        cin>>m;
+        v[i].resize(m);
+        for(int j=0;j<m;j++){
+            int ele;cin>>ele;
+            v[i][j]=ele;
+        }
+    }  
+    for(int i=0;i<q;i++){
+        int i1,i2;
+        cin>>i1>>i2;
+        cout<<v[i1][i2]<<endl;
+    } 
+    return 0;
+}
+
+iii)The first line of the input contains an integer .The next line contains  space separated integers(1-based index).The third line contains a single integer ,denoting the position of an element that should be removed from the vector.The fourth line contains two integers  and  denoting the range that should be erased from the vector inclusive of a and exclusive of b.
+
+
+Constraints
+
+
+
+Output Format
+
+Print the size of the vector in the first line and the elements of the vector after the two erase operations in the second line separated by space.
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int n;cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }  
+    int q1;cin>>q1;
+    v.erase(v.begin()+q1-1);
+    
+    int q2,q3;
+    cin>>q2>>q3;
+    v.erase(v.begin()+q2-1,v.begin()+q3-1);
+    cout<<v.size()<<endl;
+    for(auto i:v){
+        cout<<i<<" ";
+    }
     return 0;
 }
