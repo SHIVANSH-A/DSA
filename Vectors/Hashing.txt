@@ -74,3 +74,46 @@ mpp[arr[i]]++;
 Time  - best,avg - o(1) , worst - o(n) (n-no of keys)
 
 access of element - mpp[index].first(key) , mpp[index].second(val) or mpp[index]
+
+
+
+ex-ou are given two string arrays words1 and words2.
+
+A string b is a subset of string a if every letter in b occurs in a including multiplicity.
+
+For example, "wrr" is a subset of "warrior" but is not a subset of "world".
+A string a from words1 is universal if for every string b in words2, b is a subset of a.
+
+Return an array of all the universal strings in words1. You may return the answer in any order.
+
+class Solution {
+public:
+    vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
+
+        vector<string> result;
+        vector<int> freq2(26,0);
+        for(auto i:words2){
+            vector<int> temp(26,0);
+            for(auto j:i){
+                temp[j-'a']++;
+                freq2[j-'a']=max(temp[j-'a'],freq2[j-'a']);
+            }
+        }
+        for(auto i:words1){
+            vector<int> temp(26,0);
+            for(auto j : i){
+                temp[j-'a']++;
+            }
+            bool flag=true;
+            for(int k=0;k<26;k++){
+                if(freq2[k]>temp[k]){ flag=false;
+                break;}
+            }
+            if(flag){ result.push_back(i);
+            }
+        }
+
+        return result;
+    }
+
+};
