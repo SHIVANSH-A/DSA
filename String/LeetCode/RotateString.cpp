@@ -3,6 +3,7 @@
 // A shift on s consists of moving the leftmost character of s to the rightmost position.
 
 // For example, if s = "abcde", then it will be "bcdea" after one shift.
+// For rotation use k%n the you get position of char to be placed at first then add to form string
 
 #include <iostream>
 #include <string>
