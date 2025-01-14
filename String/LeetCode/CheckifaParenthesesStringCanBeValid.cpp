@@ -8,6 +8,10 @@
 // If locked[i] is '1', you cannot change s[i].
 // But if locked[i] is '0', you can change s[i] to either '(' or ')'.
 // Return true if you can make s a valid parentheses string. Otherwise, return false.
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Solution
 {
 public:
@@ -18,6 +22,8 @@ public:
         int closecnt = 0;
         if (s.size() % 2 != 0)
             return false;
+
+        // Forward pass
         for (int i = 0; i < s.size(); ++i)
         {
             if (closecnt - opencnt > wildCard)
@@ -36,9 +42,12 @@ public:
             return false;
         }
 
+        // Reset counters for backward pass
         wildCard = 0;
         opencnt = 0;
         closecnt = 0;
+
+        // Backward pass
         for (int i = s.size() - 1; i >= 0; --i)
         {
             if (opencnt - closecnt > wildCard)
@@ -60,3 +69,27 @@ public:
         return true;
     }
 };
+
+int main()
+{
+    // Test cases
+    Solution solution;
+
+    string s1 = "()()";
+    string locked1 = "1100";
+    cout << "Test Case 1: " << (solution.canBeValid(s1, locked1) ? "True" : "False") << endl;
+
+    string s2 = "())";
+    string locked2 = "101";
+    cout << "Test Case 2: " << (solution.canBeValid(s2, locked2) ? "True" : "False") << endl;
+
+    string s3 = "((())";
+    string locked3 = "11111";
+    cout << "Test Case 3: " << (solution.canBeValid(s3, locked3) ? "True" : "False") << endl;
+
+    string s4 = "())(()";
+    string locked4 = "000000";
+    cout << "Test Case 4: " << (solution.canBeValid(s4, locked4) ? "True" : "False") << endl;
+
+    return 0;
+}
