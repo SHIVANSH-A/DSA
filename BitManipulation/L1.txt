@@ -1,0 +1,11 @@
+1)Binary conversion
+dec->binary
+divide by 2 until 1 left and take the remianders in reverse
+2)Operators
+AND(&),OR(|),XOR(^).
+RIGHT SHIFT(>>) X>>K (X/2^K)
+LEFT SHIFT(<<) X<<K (X*2^K)
+NOT (~) -> I) IT WILL FLIP THE BITS
+	   II) THEN IF NEGATIVE IT WILL STORE ITS 2'S COMPLEMENT ELSE STOP
+LARGEST INTEGER - (2^31 - 1)
+MINIMUM INTE - -2^31
