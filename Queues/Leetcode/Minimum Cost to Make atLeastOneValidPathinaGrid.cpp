@@ -28,6 +28,11 @@
 
 // Input: grid = [[1,2],[4,3]]
 // Output: 1
+#include <iostream>
+#include <vector>
+#include <deque>
+using namespace std;
+
 class Solution
 {
 public:
@@ -92,3 +97,22 @@ public:
         return -1;
     }
 };
+
+int main()
+{
+    Solution solution;
+
+    // Example grid
+    vector<vector<int>> grid = {
+        {1, 1, 3},
+        {3, 2, 2},
+        {1, 1, 4}};
+
+    // Calculate the minimum cost to make at least one valid path
+    int result = solution.minCost(grid);
+
+    // Output the result
+    cout << "The minimum cost to make at least one valid path is: " << result << endl;
+
+    return 0;
+}
