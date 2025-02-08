@@ -7,7 +7,24 @@
 // Note that when answering a query, lack of a color will not be considered as a color.
 #include <bits/stdc++.h>
 using namespace std;
-
+class Solution {
+public:
+    vector<int> queryResults(int limit, vector<vector<int>>& queries) {
+        unordered_map<int, int> g;
+        unordered_map<int, int> cnt;
+        vector<int> ans;
+        for (auto& q : queries) {
+            int x = q[0], y = q[1];
+            cnt[y]++;
+            if (g.contains(x) && --cnt[g[x]] == 0) {
+                cnt.erase(g[x]);
+            }
+            g[x] = y;
+            ans.push_back(cnt.size());
+        }
+        return ans;
+    }
+};
 int main() {
     Solution sol;
     int limit = 10; // Example limit
@@ -28,21 +45,3 @@ int main() {
 
     return 0;
 }
-class Solution {
-public:
-    vector<int> queryResults(int limit, vector<vector<int>>& queries) {
-        unordered_map<int, int> g;
-        unordered_map<int, int> cnt;
-        vector<int> ans;
-        for (auto& q : queries) {
-            int x = q[0], y = q[1];
-            cnt[y]++;
-            if (g.contains(x) && --cnt[g[x]] == 0) {
-                cnt.erase(g[x]);
-            }
-            g[x] = y;
-            ans.push_back(cnt.size());
-        }
-        return ans;
-    }
-};
