@@ -134,3 +134,4 @@ int main() {
 }
 
 reverse queue - push ele in stack then again in queue
+static_cast<int>(s[i+1]) 
