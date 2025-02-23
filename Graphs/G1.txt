@@ -1,0 +1,96 @@
+Graph
+
+1)Representation
+
+i)Adjacency matrix
+A 2D matrix which will have entry for edges.
+Directed - A->B = M[A][B]
+Undirected - A-B = M[A][B] AND M[B][A]
+ENTRY : WEIGHTED - WEIGHTS
+	ELSE - 1 AND 0
+
+ii)Adjacency list
+A MAP or LIST which will have edges for each node
+unordered_map<u,v> adj -> (u-node,v-edges(vector))
+ex- 2->[0,1]
+There is edge from 2 to 0 and 1. 
+
+unordered_map<int, vector<int>> adj; 
+for(vecor<int> &vec : prerequisites) { 
+	int v = vec[1]; 
+	int u = vec[0]; 
+	adj[u].push_back(v); 
+}  
+/* 
+	n=4 
+(Vertices: 0, 1, 2, 3) 
+prerequisites- [[1,0], [2,0], [2,1], [3,1]] 
+*/
+
+
+HOW to know that que is of graphs?
+i)That entity mentioned will be numbered
+ii)Relation - hinting towards edge of graph
+iii)Directly mention graph 
+
+
+
+2)Traversal
+i)DFS
+explore a neighbour then again one of its neighbour.
+(depth - linear) use stack
+
+CODE-
+vector<bool> visited;
+vector<int> results;
+DFS(adj,u,visited,results)
+
+
+DFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &results){
+	if(visited[u]==true){
+		return;	
+	}
+	
+	visited[u]=true;
+	results.push_back(u);
+	//Exploring neighbours of u
+	for(auto &v:adj[u]){
+		if(!visited[v]){
+			DFS(adj,v,visited,results);
+		}
+	}
+
+}
+
+
+ii)BFS
+explore all neighbours then their neighbours.
+(breadth - level) use queue 
+For shortest path 
+
+CODE-
+vector<bool> visited;
+vector<int> results;
+BFS(adj,u,visited,results)
+
+
+BFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &results){
+	queue<int> q;
+	q.push(u);
+	visited[u] = true;
+	results.push_back(u);
+	
+	while(!q.empty()){
+		int u = q.front();
+		q.pop();
+		for(auto &v:adj[u]){
+			if(!visited[v]){
+				q.push(v);
+				visited[v] = true;
+				results.push_back(v);
+			}
+		}
+	}
+
+}
+ 
