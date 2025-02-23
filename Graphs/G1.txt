@@ -41,7 +41,7 @@ explore a neighbour then again one of its neighbour.
 (depth - linear) use stack
 
 CODE-
-vector<bool> visited;
+vector<bool> visited(v,false);
 vector<int> results;
 DFS(adj,u,visited,results)
 
@@ -69,7 +69,7 @@ explore all neighbours then their neighbours.
 For shortest path 
 
 CODE-
-vector<bool> visited;
+vector<bool> visited(v,false);
 vector<int> results;
 BFS(adj,u,visited,results)
 
@@ -93,4 +93,89 @@ BFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &res
 	}
 
 }
+
+3)Cycle detection
+i)Undirected
+DFS(If the next node is not parent also it is visited then cylce is present)
+vector<bool> visited(V, false); 
+	for(int i = 0; i<V; i++) { 
+		if(!visited[i] && isCycleDFS(adj, i, visited, -1)) { 
+			return true; 
+		} 
+	} 
+
+return false;
+
+
+bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited,int parent)
+	visited[u] = true; 
+	for(int &v: adj[u]) { 
+		if(v = parent) continue; 
+		if(visited[v]) return true; 
+		if(isCycleDFS(adj, v, visited, u)) {
+			return true; 
+		} 
+	}
+	return false;
+}
+
+
+BFS(If the next node is not parent also it is visited then cylce is present and use        queue with pair here for storing parent)
+vector<bool> visited(V, false); 
+	for(int i = 0; i<V; i++) { 
+		if(!visited[i] && isCycleDFS(adj, i, visited)) { 
+			return true; 
+		} 
+	} 
+
+return false;
  
+bool isCycleBFS(vector<int> adj[], int u, vector<bool>& visited) { 
+	queue<pair<int, int>> que; 
+	que.push({u, -1}); 
+	visited[u] = true; 
+	while(!que.empty()) { 
+		pair<int, int> P que.front(); 
+		que.pop(); 
+		int source = P.first; 
+		int parent = P.second; 
+		for(int &v: adj [source]) { 
+			if(visited[v] == false) { 
+				visited[v] = true; 
+				que.push({v, source}); 
+			} else if(v != parent) { 
+				return true; 
+			} 
+	}
+	return false;
+ }
+ 
+
+ii)Directed
+DFS(Here if next node is visited and also it is part of current recursion then cycle is present)
+vector<bool> visited(V, false);
+vector<bool> isRecursion(V, false); 
+	for(int i = 0; i<V; i++) { 
+		if(!visited[i] && isCycleDFS(adj, i, visited,isRecursion)) { 
+			return true; 
+		} 
+	}
+ 
+return false;
+
+
+bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited, vector<bool> isRecursion){
+	visited[u] = true; 
+	inRecursion [u] = true; 
+	for(int &v: adj[u]) { 
+		//if not visited, then we check for cycle in DFS 
+		if(visited[v] == false && isCycleDFS(adj, v, visited, inRecursion)){ 
+			return true; }
+		else if(inRecursion [v] == true) 
+			return true; }
+	}
+
+	isRecursion[u] = false;
+	return false;
+}
+	
