@@ -12,48 +12,57 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
+int main()
+{
     Solution sol;
     vector<int> nums = {1, 2, 2, 2, 3, 2, 2}; // Example input
     int result = sol.minimumIndex(nums);
     cout << "Minimum index: " << result << endl;
     return 0;
 }
-class Solution {
-    public:
-        int minimumIndex(vector<int>& nums) {
-            int n = nums.size();
-            unordered_map<int, int> freq;
-    
-            for (int num : nums) {
-                freq[num]++;
-            }
-    
-            int dominant = -1, totalCount = 0;
-            int key,value;
-            for (auto & [key, value] : freq) {
-                if (value * 2 > n) {
-                    dominant = key;
-                    totalCount = value;
-                    break;
-                }
-            }
-    
-            if (dominant == -1) return -1;
-    
-            int prefixCount = 0;
-            for (int i = 0; i < n - 1; i++) {
-                if (nums[i] == dominant) {
-                    prefixCount++;
-                }
-                int suffixCount = totalCount - prefixCount;
-    
-                if (prefixCount * 2 > (i + 1) && suffixCount * 2 > (n - i - 1)) {
-                    return i;
-                }
-            }
-            
-            return -1;
+class Solution
+{
+public:
+    int minimumIndex(vector<int> &nums)
+    {
+        int n = nums.size();
+        unordered_map<int, int> freq;
+
+        for (int num : nums)
+        {
+            freq[num]++;
         }
-    };
-    
+
+        int dominant = -1, totalCount = 0;
+        int key, value;
+        for (auto &[key, value] : freq)
+        {
+            if (value * 2 > n)
+            {
+                dominant = key;
+                totalCount = value;
+                break;
+            }
+        }
+
+        if (dominant == -1)
+            return -1;
+
+        int prefixCount = 0;
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (nums[i] == dominant)
+            {
+                prefixCount++;
+            }
+            int suffixCount = totalCount - prefixCount;
+
+            if (prefixCount * 2 > (i + 1) && suffixCount * 2 > (n - i - 1))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+};

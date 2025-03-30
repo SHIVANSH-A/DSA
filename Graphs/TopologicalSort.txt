@@ -1,5 +1,5 @@
 Topological Sort(Only for Directed acyclic graph)
-u->v then u should be before v
+(From traversal take any edge)u->v then u should be before v
 
 DFS
 Along with DFS Take stack to store nodes in topological order
@@ -14,7 +14,7 @@ for(int i=0;i<v;i++){
 //Then pop form stack and store it.
 
 
-DFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &results){
+DFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,stack<int> &results){
 	if(visited[u]==true){
 		return;	
 	}
@@ -27,6 +27,6 @@ DFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &res
 			DFS(adj,v,visited,results);
 		}
 	}
-	results.push_back(u);
+	results.push(u);
 
 }

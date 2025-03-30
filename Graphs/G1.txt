@@ -11,7 +11,7 @@ ENTRY : WEIGHTED - WEIGHTS
 
 ii)Adjacency list
 A MAP or LIST which will have edges for each node
-unordered_map<u,v> adj -> (u-node,v-edges(vector))
+unordered_map<u,v> adj -> (u-node,v-shows edges(vector,values are nodes))
 ex- 2->[0,1]
 There is edge from 2 to 0 and 1. 
 
@@ -96,10 +96,10 @@ BFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &res
 
 3)Cycle detection
 i)Undirected
-DFS(If the next node is not parent also it is visited then cylce is present)
+DFS(If the next node is not parent also it is visited then cylce is present,take case of graph with only two nodes 1--10)
 vector<bool> visited(V, false); 
 	for(int i = 0; i<V; i++) { 
-		if(!visited[i] && isCycleDFS(adj, i, visited, -1)) { 
+		if(!visited[i] && isCycleDFS(adj, i, visited, -1)) { //This to traverse the graph which have different broken components
 			return true; 
 		} 
 	} 
@@ -110,7 +110,7 @@ return false;
 bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited,int parent)
 	visited[u] = true; 
 	for(int &v: adj[u]) { 
-		if(v = parent) continue; 
+		if(v == parent) continue; 
 		if(visited[v]) return true; 
 		if(isCycleDFS(adj, v, visited, u)) {
 			return true; 
