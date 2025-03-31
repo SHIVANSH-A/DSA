@@ -107,7 +107,7 @@ vector<bool> visited(V, false);
 return false;
 
 
-bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited,int parent)
+bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited,int parent){
 	visited[u] = true; 
 	for(int &v: adj[u]) { 
 		if(v == parent) continue; 
