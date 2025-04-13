@@ -1,0 +1,17 @@
+Binary exponentiation
+Can calculate a^b in O(logb)
+previuosly it was O(b)
+
+
+a^b =  a^(b/2) ^ 2  if b - even
+       a^(b/2) ^ 2 * a if b- odd
+
+
+
+int findPow(int a,int b){
+	if(b<1) retrun 1;
+	int temp = findPow(a,b/2);
+	int result = temp*temp;
+	if(b%2==1) result = result * a;
+	return result;
+}
