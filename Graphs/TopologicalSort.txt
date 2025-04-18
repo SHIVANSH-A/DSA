@@ -1,7 +1,7 @@
 Topological Sort(Only for Directed acyclic graph)
 (From traversal take any edge)u->v then u should be before v
 
-DFS
+1)DFS
 Along with DFS Take stack to store nodes in topological order
 (u->v First push v into stack using recursion and after all recursion then push u)
 
@@ -30,3 +30,34 @@ DFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &res
 	results.push(u);
 
 }
+2)BFS (Kanh's algorithm)
+Traverse with BFS and push only those to queue whose indegree becomes 0
+vector<int> topoSort(int N, vector<vector<int>>& edges) {
+        queue<int> que;
+        //Calculating Indegree
+        vector<int> indegree={0};
+        for(int i=0;i<N;i++){
+            for(int &v:edges[i]){
+                indegree[v]++;
+            }
+        }
+        
+        //Pushing vertices with indegree 0 to queue
+        for(int i=0;i<N;i++){
+            if(indegree[i]==0) que.push(i);
+        }
+        
+        vector<int> results;
+        //BFS with pushing only when indegree 0
+        while(!que.empty()){
+            int u = que.front();
+            que.pop();
+            results.push_back(u);
+            
+            for(int v : edges[u]){
+                indegree[v]--;
+                if(indegree[v]==0) que.push(v);
+            }
+        }
+        return results;
+    }

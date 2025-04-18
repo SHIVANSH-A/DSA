@@ -178,4 +178,36 @@ bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited, vector<bool> is
 	isRecursion[u] = false;
 	return false;
 }
+BFS(Topological sort is applied only to DAG if topological sort using Kahn's algo can't be applied then cycle is present - As because every node will not be inserted in que because of cycle indegree of some nodes will never be 0 )
+bool topoSort(int N, vector<vector<int>>& edges) {
+        queue<int> que;
+        //Calculating Indegree
+        vector<int> indegree={0};
+        for(int i=0;i<N;i++){
+            for(int &v:edges[i]){
+                indegree[v]++;
+            }
+        }
+        
+        //Pushing vertices with indegree 0 to queue
+        for(int i=0;i<N;i++){
+            if(indegree[i]==0) que.push(i);
+        }
+        
+        vector<int> results;
+        //BFS with pushing only when indegree 0
+        while(!que.empty()){
+            int u = que.front();
+            que.pop();
+            results.push_back(u);
+            
+            for(int v : edges[u]){
+                indegree[v]--;
+                if(indegree[v]==0) que.push(v);
+            }
+        }
+
+	if(results.size()==N) return false;
+        return true;
+    } 
 	
