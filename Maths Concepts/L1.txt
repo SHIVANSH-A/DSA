@@ -46,3 +46,11 @@ Sieve of Eratosthenes
         
         	return r;
 			O(n* log(log(n))) (n/2+n/3+n/4..)
+
+Finding median of k sized subarrays
+	A)Brute force - sliding window + (sort the subarray then find median)
+	B)sliding window + optimal approach
+		i)Take two data structures(left and right)
+		ii)if(size(left)<=size(right)) insert in left else in right
+		iii)if max(left) > min(right) swap then median=left.rbegin()
+		iv)Use multiset (which stores in sorted order and duplicates are allowed) 
