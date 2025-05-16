@@ -53,4 +53,11 @@ Finding median of k sized subarrays
 		i)Take two data structures(left and right)
 		ii)if(size(left)<=size(right)) insert in left else in right
 		iii)if max(left) > min(right) swap then median=left.rbegin()
-		iv)Use multiset (which stores in sorted order and duplicates are allowed) 
+		iv)Use multiset (which stores in sorted order and duplicates are allowed)
+
+Fermat's little theorem
+	A)Modular nCr
+		(a/b) % M = a* b^-1 % M
+				  = a* (inverse modulo of b%M) % M
+				  = a* (P) % M  ((b*P) % M  = 1 , Theorem - P= (b^M-2)%M )
+				  = n! * (r!*(n-r)!)^-1 % M  
