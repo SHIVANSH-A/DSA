@@ -1,0 +1,43 @@
+I)Longest Increasing Subsequence(Length)
+    nums = { 10, 9, 2, 5, 3, 7, 101, 18} 
+            j         i
+    dp = {1, 1, 1, 1, 2, 2, 3, 4, 4} (Initially 1,Tracks the length of max subsequence upto i which is Increasing)
+
+    for(int i=0;i<n;i++){
+        for(j=0;j<i;j++){
+            if(nums[j]<nums[i]){
+                if(dp[j]+1>dp[i]){
+                    dp[i] = dp[j] + 1;
+                    LIS = max(LIS,dp[i]);
+                }
+            }   
+        }
+    }
+II)Getting the subsequence which is maximum
+    nums = { 10, 9, 2, 5, 3, 7, 101, 18}    
+            j         i
+    dp = {1, 1, 1, 1, 2, 2, 3, 4, 4} Tracks the length of max subsequence upto i which is Increasing
+    PrevIndex = {-1,-1,-1,2,2,3, 5, 5} Tracks the PrevIndex which is joined to current nums[i]
+
+    for(int i=0;i<n;i++){
+        for(j=0;j<i;j++){
+            if(nums[j]<nums[i]){
+                if(dp[j]+1>dp[i]){
+                    dp[i] = dp[j] + 1;
+                    PrevIndex[i] = j;
+                    if(LIS<dp[i]){
+                        LIS = dp[i];
+                        LISidx = i; 
+                    }
+                }
+            }
+        }
+    }
+
+    Now traverse the PrevIndex array to print the subsequence
+    i = LISidx;
+    while(i!=-1){
+        r.push_back(nums[i]);
+        i  = PrevIndex[i];
+    }
+    reverse the output
