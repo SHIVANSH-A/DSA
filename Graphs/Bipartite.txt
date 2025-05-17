@@ -1,0 +1,40 @@
+Bipartite Graph - Any graph that can be coloured with two colors without adjacent nodes with same colors.
+    1)How to detect que is of Bipartite graph?
+        i)Dividing(grouping) a graph into two parts
+    2)Checking graph is Bipartite or not 
+        i)DFS (Marking a node with one color and marking its adjacent nodes with different color (1-curr_Color) then 
+                checking whether at any point two adjacent  nodes comes with same color)
+            bool DFS(unordered_map<int,vector<int>> &adj,int curr,vector<int> &colors,int current_color){
+                colors[curr] = current_color;
+                
+                for(auto &v:adj[curr]){
+                    if(colors[v]==colors[curr]) return false;
+                    if(colors[v]==-1){
+                        colors[v] = 1 - current_color;
+                        if(!DFS(adj,v,colors,colors[v])) return false;
+                    }
+                }
+                return true;
+            }
+            bool isBipartite(int n, vector<vector<int>> &edges) {
+                // Code here
+                vector<int> colors(n,-1);
+                unordered_map<int,vector<int>> adj;
+                
+                //Constructing adj
+                for(auto &i:edges){
+                    int u = i[0];
+                    int v = i[1];
+                    
+                    adj[u].push_back(v);
+                    adj[v].push_back(u);
+                }
+                for(int i=0;i<n;i++){
+                    if(colors[i]==-1){
+                        if(!DFS(adj,i,colors,0)){
+                            return false;   
+                        }
+                    }
+                }
+                return true;
+            }
