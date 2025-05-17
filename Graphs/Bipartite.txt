@@ -38,3 +38,39 @@ Bipartite Graph - Any graph that can be coloured with two colors without adjacen
                 }
                 return true;
             }
+        ii)BFS
+            class Solution {
+            public:
+                bool BFS(vector<vector<int>> &adj,int curr,vector<int> &colors,int current_color){
+                        queue<int> q;
+                        q.push(curr);
+                        colors[curr] = current_color;
+
+                        while(!q.empty()){
+                            int u = q.front();
+                            q.pop();
+                            for(auto &v:adj[u]){
+                                if(colors[v]==colors[u]) return false;
+                                if(colors[v]==-1){
+                                    q.push(v);
+                                    colors[v] = 1 - colors[u];
+                                }
+                            }
+                        }
+                        return true;
+                }
+                bool isBipartite(vector<vector<int>> &adj) {
+                    // Code here
+                    int n  = adj.size();
+                    vector<int> colors(n,-1);
+                    
+                    for(int i=0;i<n;i++){
+                        if(colors[i]==-1){
+                            if(!BFS(adj,i,colors,0)){
+                                return false;   
+                            }
+                        }
+                    }
+                    return true;
+                }
+            };
