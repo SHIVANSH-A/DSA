@@ -74,3 +74,4 @@ Bipartite Graph - Any graph that can be coloured with two colors without adjacen
                     return true;
                 }
             };
+        iii)If any cycle with odd number of nodes is present then it is not Bipartite.
