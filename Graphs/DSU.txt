@@ -1,5 +1,5 @@
 Dijoint Set Union
-    Operations(Union Find)
+    I)Operations(Union Find)
         i)Combining elements - Union
         ii)Checking whether two elements belongs to same set or not - Find
 
@@ -83,5 +83,88 @@ Dijoint Set Union
             }
 
         }
+
+    II)Cycle detection using DSU
+        build the graph according to given edges using Union if at any point parent_a == parent_b then cycle is present
+        and check if a-b is processed then again b-a will not be processed(process only if a<b)
+        
+        Code-
+        class Solution {
+        vector<int> parent;
+        vector<int> rank;
+
+        int find(int i) {
+            if (i == parent[i]) return i;
+            return parent[i] = find(parent[i]);  // Path compression
+        }
+
+        void Union(int a, int b) {
+            int parent_a = find(a);
+            int parent_b = find(b);
+            if (parent_a == parent_b) return;
+
+            if (rank[parent_a] > rank[parent_b]) {
+                parent[parent_b] = parent_a;
+            } else if (rank[parent_a] < rank[parent_b]) {
+                parent[parent_a] = parent_b;
+            } else {
+                parent[parent_a] = parent_b;
+                rank[parent_b]++;
+            }
+        }
+
+        public:
+            bool isCycle(int V, vector<vector<int>>& edges) {
+                parent.resize(V);
+                rank.resize(V, 0);
+
+                for (int i = 0; i < V; ++i)
+                    parent[i] = i;
+
+                // Build the adjacency list
+                vector<vector<int>> adj(V);
+                for (const auto& edge : edges) {
+                    int u = edge[0];
+                    int v = edge[1];
+                    adj[u].push_back(v);
+                    adj[v].push_back(u);  // Since the graph is undirected
+                }
+
+                // Use Union-Find to check for cycles
+                vector<vector<bool>> visited(V, vector<bool>(V, false));  // To avoid double-processing
+                /* for(auto& edge : edges){
+                    int u = edge[0];
+                    int v = edge[1];
+
+                    int parent_u = find(u);
+                    int parent_v = find(v);
+
+                    if(parent_u == parent_v)
+                        return true;
+
+                    Union(u, v);
+                }
+                    return false;
+                }*/
+
+                for (int u = 0; u < V; ++u) {
+                    for (int v : adj[u]) {
+                        if (!visited[u][v] && !visited[v][u]) {
+                            visited[u][v] = visited[v][u] = true;
+
+                            int parent_u = find(u);
+                            int parent_v = find(v);
+
+                            if (parent_u == parent_v)
+                                return true;
+
+                            Union(u, v);
+                        }
+                    }
+                }
+                return false;
+            }
+        };
+
 
         
