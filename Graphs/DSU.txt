@@ -1,0 +1,38 @@
+Dijoint Set Union
+    Operations(Union Find)
+        i)Combining elements - Union
+        ii)Checking whether two elements belongs to same set or not - Find
+
+    1)Union
+        elements [a,b,c,d,e,f,g,h]
+        parent   [a,b,c,d,e,f,g,h]    
+        Union (a,b) - Find both's parent and then make anyone parent as other parent
+        if(a becomes parent) b--->a  
+        elements [a,b,c,d,e,f,g,h]
+        parent   [a,a,c,d,e,f,g,h] 
+
+        if many Union Operations were performed then
+        elements [a,b,c,d,e,f,g,h]
+        parent   [e,b,c,d,e,e,g,h]      b--->a--->e<---f 
+
+
+    2)Find
+        To find whose parent is whom -Find(b)
+        parent(b)=a --> parent(a)=e --> parent(e)=e (Then parent of b is e)
+
+
+    Code - 
+    int find(int i,parent){
+        if(i==parent[i]) return i;
+        return find(parent[i],parent);
+    }
+
+    int Union(int a,int b,parent){
+        int parent_a = find(a,parent);
+        int parent_b = find(b,parent);
+
+        if(parent_a!=parent_b){
+            parent[parent_a] = parent_b;
+        }
+
+    }
