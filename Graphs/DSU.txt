@@ -22,17 +22,66 @@ Dijoint Set Union
 
 
     Code - 
-    int find(int i,parent){
-        if(i==parent[i]) return i;
-        return find(parent[i],parent);
-    }
-
-    int Union(int a,int b,parent){
-        int parent_a = find(a,parent);
-        int parent_b = find(b,parent);
-
-        if(parent_a!=parent_b){
-            parent[parent_a] = parent_b;
+        int find(int i,parent){
+            if(i==parent[i]) return i;
+            return find(parent[i],parent);
         }
 
-    }
+        int Union(int a,int b,parent){
+            int parent_a = find(a,parent);
+            int parent_b = find(b,parent);
+
+            if(parent_a!=parent_b){
+                parent[parent_a] = parent_b;
+            }
+
+        }
+
+    Problems  - Find  - If the graph is so long it will take large number of recursive calls
+                Union - Problem of find is because large graph is formed.
+
+    Solution 
+    i)Path compression (Find)
+         4
+         ^
+         |
+         |
+         3
+         ^
+         |
+         |
+         2
+         ^
+         |
+         |
+         1
+
+         While getting parent[1] it will see parent[2] and other nodes so while returning store other's parent also
+    ii)Rank (Union)      
+        Union(a,b) - Take rank vector with initial ranks as 0
+        if(rank[a]==rank[b]) make anyone parent and increase rank of parent by 1.
+        if(rank[a]!=rank[b]) make parent with more rank and don't increase rank of any element.
+
+    Code-
+    int find(int i,parent){
+            if(i==parent[i]) return i;
+            return parent[i] = find(parent[i],parent);
+        }
+
+        int Union(int a,int b,parent){
+            int parent_a = find(a,parent);
+            int parent_b = find(b,parent);
+            if(parent_a==parent_b) return;
+
+            if(parent_a!=parent_b){
+                if(rank[parent_a] > rank[parent_b]) parent[parent_b] = parent_a;
+                else if(rank[parent_a] < rank[parent_b]) parent[parent_a] = parent_b;
+                else{
+                    parent[parent_a] = parent_b;
+                    rank[parent_b]++;
+                }
+            }
+
+        }
+
+        
