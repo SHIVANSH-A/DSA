@@ -41,7 +41,29 @@
 #include <cmath>
 #include <algorithm>
 using namespace std;
+// class Solution {
+// public:
+//     typedef long long ll;
 
+//     long long maximumValueSum(vector<int>& nums, int k, vector<vector<int>>& edges) {
+//         vector<int> profit;
+//         ll actualSum   = 0;
+
+
+//         for(int i : nums){
+//             actualSum+=i;
+//             profit.push_back((i^k)-i);
+//         }
+
+//         sort(profit.begin(),profit.end(),greater<int>());
+
+//         for(int i=0;i<nums.size()-1;i+=2){ Taking pair wise sum and cheking if they can make profit
+//             ll currProfit = profit[i]+profit[i+1];
+//             if(profit[i]+profit[i+1]>0) actualSum+=currProfit;
+//         }
+//         return actualSum;  
+//     }
+// };
 class Solution
 {
 public:
