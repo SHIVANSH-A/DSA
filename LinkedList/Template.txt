@@ -90,5 +90,20 @@ ii)list.insert(itr,itrstart,itrend) ->insert values between two itr.s(excluding 
 i)list.erase(itr)->del the ele pointed by the itr
 ii)list.erase(itrstart,itrend)->delete elements between these itr(excluding end).
 
+*Lambda (anonymous function)
+ return-type  var = [ Capture ]( parameters ){
+	body;
+ }
 
+Capture - To use Value of outer scope ,can be pass by value or reference.
+Usage - any_of,none_of,all_of
+ex - Checking odd number present in vector
+
+if(any_of(v.begin,v.end(),lambda)){
+	return "Odd is present";
+}
+
+auto lambda = [ ](int a){
+	return(a%2!=0);
+};
 
