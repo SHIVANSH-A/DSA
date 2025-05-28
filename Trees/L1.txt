@@ -21,11 +21,19 @@ Binary Tree
             root->left=new Node(10);
         }
     3)Traversal
-        i)INORDER TRAVERSAL (left root right) (root is at 2 - so traverse if a node is visited second time it will be added t result)
+        i)INORDER TRAVERSAL (left root right) (root is at 2 - so traverse if a node is visited second time it will be added to result)
             void inorder(node){
                 if(node==null) return;
 
                 inorder(node->left);
                 cout<<node->data;
                 inorder(node->right);
+            }
+        ii)PREORDER TRAVERSAL (root left right) (root is at 1 - so traverse, if a node is visited first time it will be added to result)
+            void preorder(node){
+                if(node==null) return;
+
+                cout<<node->data;
+                preorder(node->left);
+                preorder(node->right);
             }
