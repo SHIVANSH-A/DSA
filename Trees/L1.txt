@@ -5,3 +5,18 @@ Binary Tree
         iii)Perfect-All leaf nodes are at same level
         iv)Balanced-height of tree max logm
         v)Degenerate-Every node has single children(Linear)
+    2)Representation
+        Struct Node{
+            int data;
+            Struct node *left;
+            Struct node *right;
+            Node(int val){
+                data = val;
+                left=right=null;
+            }
+        }
+
+        main(){
+            Struct node *root = new Node(1);
+            root->left=new Node(10);
+        }
