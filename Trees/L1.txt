@@ -17,6 +17,15 @@ Binary Tree
         }
 
         main(){
-            Struct node *root = new Node(1);
+            Struct Node *root = new Node(1);
             root->left=new Node(10);
         }
+    3)Traversal
+        i)INORDER TRAVERSAL (left root right) (root is at 2 - so traverse if a node is visited second time it will be added t result)
+            void inorder(node){
+                if(node==null) return;
+
+                inorder(node->left);
+                cout<<node->data;
+                inorder(node->right);
+            }
