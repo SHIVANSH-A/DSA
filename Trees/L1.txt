@@ -1,0 +1,7 @@
+Binary Tree
+    1)Types
+        i)Full - 0 or 2 children
+        ii)Complete-All levels should be completely filled
+        iii)Perfect-All leaf nodes are at same level
+        iv)Balanced-height of tree max logm
+        v)Degenerate-Every node has single children(Linear)
