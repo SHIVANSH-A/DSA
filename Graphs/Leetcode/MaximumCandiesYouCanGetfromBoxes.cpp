@@ -59,7 +59,8 @@ public:
         }
         for (auto v : containedBoxes[curr])
         {
-            DFS(v, visited, status, keys, containedBoxes);
+            if (status[curr])
+                DFS(v, visited, status, keys, containedBoxes);
         }
     }
 
