@@ -13,7 +13,7 @@ Dijoint Set Union
 
         if many Union Operations were performed then
         elements [a,b,c,d,e,f,g,h]
-        parent   [e,b,c,d,e,e,g,h]      b--->a--->e<---f 
+        parent   [e,a,c,d,e,e,g,h]      b--->a--->e<---f 
 
 
     2)Find
