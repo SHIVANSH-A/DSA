@@ -1,0 +1,10 @@
+Dikstra's Algorithm
+    Dijkstra’s Algorithm is a greedy algorithm used to find the shortest path from a source node to 
+    all other nodes in a weighted graph with non-negative edge weights.
+    1)Implementation
+        i)Using Priority queue(min-heap)
+            a)Use Priority queue with pair<int,int> it will store distance and curr-node.
+            b)Create a result array of size V, initialized with INT_MAX to represent infinite distances.
+            c)Set result[src] = 0 since the distance from source to itself is 0.
+            d)Push the source into the queue: {0, src} where 0 is the distance.
+            e)Now iterate on graph using Priority-queue and push the pair if minimum dist is found,after all iterations result vector will have all the min distances from source node.
