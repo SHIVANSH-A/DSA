@@ -8,3 +8,43 @@ Dikstra's Algorithm
             c)Set result[src] = 0 since the distance from source to itself is 0.
             d)Push the source into the queue: {0, src} where 0 is the distance.
             e)Now iterate on graph using Priority-queue and push the pair if minimum dist is found,after all iterations result vector will have all the min distances from source node.
+            Code -
+                class Solution {
+                    public:
+                        vector<int> dijkstra(int V, vector<vector<int>> &edges, int src) {
+                            // Code here
+                            priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+                            vector<vector<pair<int,int>>> adj(V);
+                            
+                            for(auto &i:edges){
+                                int u = i[0];
+                                int v = i[1];
+                                int wt = i[2];
+                                
+                                adj[u].push_back({v,wt});
+                                adj[v].push_back({u,wt});
+                            }
+                            
+                            vector<int> result(V,INT_MAX);
+                            result[src] = 0;
+                            pq.push({0,src});
+                            
+                            
+                            while(!pq.empty()){
+                                int u = pq.top().second;
+                                int d = pq.top().first;
+                                pq.pop();
+                                
+                                for(auto &v:adj[u]){
+                                    int node = v.first;
+                                    int wt = v.second;
+                                    
+                                    if(d+wt<result[node]){
+                                        result[node] = d+wt;
+                                        pq.push({d+wt,node});
+                                    }
+                                }
+                            }
+                            return result;
+                        }
+                    };
