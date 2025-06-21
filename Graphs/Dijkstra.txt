@@ -53,4 +53,49 @@ Dikstra's Algorithm
                   if at any point we encounter {3,0} from priority_queue and and distance of prev node is 1
                    then total distance to reach 0 is 4 .But 0 has 6 which means in priority_queue there will be {6,0} which will be again processed.
                    To avoid this use set in which we can erase it. 
-        
+        ii)Set
+            class Solution {
+            public:
+                vector<int> dijkstra(int V, vector<vector<int>> &edges, int src) {
+                    // Code here
+                    set<pair<int,int>> st;
+                    vector<vector<pair<int,int>>> adj(V);
+                    
+                    for(auto &i:edges){
+                        int u = i[0];
+                        int v = i[1];
+                        int wt = i[2];
+                        
+                        adj[u].push_back({v,wt});
+                        adj[v].push_back({u,wt});
+                    }
+                    
+                    vector<int> result(V,INT_MAX);
+                    result[src] = 0;
+                    st.insert({0,src});
+                    
+                    
+                    while(!st.empty()){
+                        auto it = *st.begin();
+                        int u = it.second;
+                        int d = it.first;
+                        st.erase({d,u});
+                        
+                        for(auto &v:adj[u]){
+                            int node = v.first;
+                            int wt = v.second;
+                            
+                            if(d+wt<result[node]){
+                                if(result[node]!=INT_MAX){
+                                    st.erase({result[node],node});
+                                    // auto it = st.find({result[node],node});
+                                    // st.erase(it);
+                                }
+                                result[node] = d+wt;
+                                st.insert({d+wt,node});
+                            }
+                        }
+                    }
+                    return result;
+                }
+            };
