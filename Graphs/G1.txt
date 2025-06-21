@@ -211,3 +211,15 @@ bool topoSort(int N, vector<vector<int>>& edges) {
         return true;
     } 
 	
+
+	Note - Iteration using BFS on matrix: Use direction vector which have all possible combina
+		vector<vector<int>> directions{{-1,0},{-1,1},{0,1},{1,1},{1,0},{-1,-1},{0,-1},{1,-1}};
+		for(auto &dir:directions){
+                    int x_ = x + dir[0];
+                    int y_ = y + dir[1];
+
+                    if(logic){
+                        q.push({x_,y_});
+                        grid[x_][y_] = 1;
+                    }
+                }
