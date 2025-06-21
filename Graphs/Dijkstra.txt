@@ -48,11 +48,14 @@ Dikstra's Algorithm
                             return result;
                         }
                     };
+        T.C - O(V*(logV + ElogV)) - O(VElogV)
         Problem - Extra processing 
                   result = [6,2,3,1]
                   if at any point we encounter {3,0} from priority_queue and and distance of prev node is 1
                    then total distance to reach 0 is 4 .But 0 has 6 which means in priority_queue there will be {6,0} which will be again processed.
                    To avoid this use set in which we can erase it. 
+        Queue - We can implement it using queue but it will take lots of iterations to reach minimum dist.
+
         ii)Set
             class Solution {
             public:
