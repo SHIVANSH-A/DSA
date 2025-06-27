@@ -106,3 +106,20 @@ A virtual function from being overridden in derived classes.
 | Prevent misuse of base class methods              | Protect critical logic from being overridden |
 | Design sealed classes (cpp - class A final )      | To ensure no further subclassing             |
 | Performance optimization                          | May help compiler de-virtualize calls        |
+
+
+Abstraction 
+It is the process of hiding internal implementation details and exposing only the essential features of an object or system.
+Focus on what an object does, not how it does it.(No use of abstract keyword)
+
+Interfaces
+simulate interfaces using abstract classes with only pure virtual functions.
+no interface keyword
+
+| Concept              | Java                 | C++ Equivalent                                  |
+| -------------------- | -------------------- | ----------------------------------------------- |
+| Abstract class       | `abstract class`     | Class with at least one pure virtual function   |
+| Interface            | `interface`          | Abstract class with only pure virtual functions |
+| Abstract function    | `abstract void f();` | `virtual void f() = 0;`                         |
+| Virtual function     | `@Override` method   | `virtual` keyword + overridden                  |
+| Runtime polymorphism | Yes                  | Yes (via `virtual`)                             |
