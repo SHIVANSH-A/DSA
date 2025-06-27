@@ -1,0 +1,12 @@
+Concept                Meaning
+---------------------- --------------------------------------------------------
+class                  Blueprint for objects (has data + methods)
+object                 Instance of a class
+public                 Accessible outside the class
+vector<string>         Dynamic list of strings
+member function        Function defined inside a class
+range-based for loop   Loop that iterates over all elements of a container
+. (dot operator)       Used to access members of a class
+#include               Brings in standard library functions
+using namespace std    Avoids typing std:: before each function
+main()                 Program starts execution here
