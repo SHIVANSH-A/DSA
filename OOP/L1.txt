@@ -123,3 +123,15 @@ no interface keyword
 | Abstract function    | `abstract void f();` | `virtual void f() = 0;`                         |
 | Virtual function     | `@Override` method   | `virtual` keyword + overridden                  |
 | Runtime polymorphism | Yes                  | Yes (via `virtual`)                             |
+
+
+| Aspect                | **Encapsulation**                                                                                  | **Abstraction**                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **Definition**        | Wrapping data and methods into a single unit (class) and **restricting direct access** to the data | Hiding internal details and **showing only essential features**            |
+| **Goal**              | Protect data from unauthorized access and misuse                                                   | Reduce complexity by hiding implementation                                 |
+| **Focus**             | **How** access to data is controlled                                                               | **What** is shown to the user, hiding how                                  |
+| **Implementation**    | Achieved using **access specifiers** like `private`, `public`, `protected`                         | Achieved using **abstract classes**, **virtual functions**, **interfaces** |
+| **Example**           | `private int balance;` and `getBalance()` method                                                   | A base class with a pure virtual `draw()` function                         |
+| **Real-life Analogy** | Medical capsule (hides the medicine inside)                                                        | Car dashboard (you can drive without knowing the engine logic)             |
+| **Control Level**     | **Data-level** protection                                                                          | **Design-level** simplification                                            |
+| **User Concern**      | Ensures secure access to object data                                                               | Ensures users see only relevant info                                       |
