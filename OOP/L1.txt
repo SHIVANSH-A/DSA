@@ -53,3 +53,13 @@ When your class uses pointers or dynamic memory (like new), the default copy con
 Friend keyword(Grant member level access)
 The friend keyword in C++ allows a non-member function or another class to access private or protected members of a class.
 Normally, private members of a class are not accessible outside that class, but marking a function/class as a friend grants special access.
+
+Getter/Setter
+Getter: A method that returns the value of a private data member.
+Setter: A method that sets or updates the value of a private data member.
+| Reason           | Description                                                                      |
+| ---------------- | -------------------------------------------------------------------------------- |
+| Encapsulation | Keep class data private and expose only safe, controlled access                     |
+| Validation    | Setters can validate data before changing it                                        |
+| Flexibility   | You can later change how a value is computed or stored without affecting other code |
+| Debugging     | Add logging or breakpoints in getter/setter to track value access/change            |
