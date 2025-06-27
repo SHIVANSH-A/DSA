@@ -67,3 +67,42 @@ Setter: A method that sets or updates the value of a private data member.
 
 Delegating Constructor
 A delegating constructor is a constructor that calls another constructor in the same class to reuse code and avoid duplication.
+
+
+Inheritance
+Inheritance is a feature in object-oriented programming that allows a class (derived class) to inherit properties and behavior (methods and variables) from another class (base class).
+
+Purpose:
+    Code reuse
+    Polymorphism
+    Extensibility
+
+class Base {
+public:
+    int a;
+};
+
+class Derived : public Base {
+public:
+    int b;
+};
+
+
+| Inheritance Type | Base Member Type | Inherited As    | Accessible in Child Class? | Accessible Outside Class? |
+| ---------------- | ---------------- | --------------- | -------------------------- | ------------------------- |
+| `public`         | `public`         | `public`        |  Yes                      |  Yes                     |
+| `public`         | `protected`      | `protected`     |  Yes                      |  No                      |
+| `public`         | `private`        | ✖ Not inherited |  No                       |  No                      |
+
+
+final keyword 
+
+final keyword prevents:
+A class from being inherited further.
+A virtual function from being overridden in derived classes.
+
+| Situation                                         | Why Use `final`                              |
+| ------------------------------------------------- | -------------------------------------------- |
+| Prevent misuse of base class methods              | Protect critical logic from being overridden |
+| Design sealed classes (cpp - class A final )      | To ensure no further subclassing             |
+| Performance optimization                          | May help compiler de-virtualize calls        |
