@@ -63,3 +63,7 @@ Setter: A method that sets or updates the value of a private data member.
 | Validation    | Setters can validate data before changing it                                        |
 | Flexibility   | You can later change how a value is computed or stored without affecting other code |
 | Debugging     | Add logging or breakpoints in getter/setter to track value access/change            |
+
+
+Delegating Constructor
+A delegating constructor is a constructor that calls another constructor in the same class to reuse code and avoid duplication.
