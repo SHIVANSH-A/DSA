@@ -50,4 +50,6 @@ When your class uses pointers or dynamic memory (like new), the default copy con
     Allocates new memory.
     Copies actual content, not just the pointer.
 
-
+Friend keyword(Grant member level access)
+The friend keyword in C++ allows a non-member function or another class to access private or protected members of a class.
+Normally, private members of a class are not accessible outside that class, but marking a function/class as a friend grants special access.
