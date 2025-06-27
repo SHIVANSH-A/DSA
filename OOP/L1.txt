@@ -10,3 +10,44 @@ range-based for loop   Loop that iterates over all elements of a container
 #include               Brings in standard library functions
 using namespace std    Avoids typing std:: before each function
 main()                 Program starts execution here
+
+
+You can create an object in two ways:
+
+    1)Stack allocation (most common and simple):
+
+        Chai c; // object c is created on the stack
+
+    2)Heap allocation (requires new):
+
+        Chai* c = new Chai(); // object is on the heap; pointer to it is stored
+        
+    Chai c; automatically calls the constructor and destroys the object when it goes out of scope.
+    new Chai() allocates memory dynamically on the heap and needs manual delete to free it.
+
+| Constructor Type          | Purpose                                | Notes                                  |
+| ------------------------- | -------------------------------------- | -------------------------------------- |
+| Default Constructor       | Initialize with default values         | Needed if no constructor is defined    |
+| Parameterized Constructor | Initialize with custom values          | Allows flexibility                     |
+| Copy Constructor          | Create a copy of an object (deep copy) | Must be defined if class uses pointers |
+| Destructor                | Clean up resources (like `delete`)     | Important when using `new`             |
+
+Why Not Use Default Copying?
+When your class uses pointers or dynamic memory (like new), the default copy constructor does a shallow copy:
+
+    i)Shallow Copy (Default Behavior):
+
+        Chai c1;
+        Chai c2 = c1;  // pointer copied as-is
+
+
+    This leads to:
+    Both objects sharing the same memory address.
+    Double delete error in destructors (undefined behavior).
+    One object modifying data of the other unintentionally.
+
+    ii)Deep Copy (Custom Copy Constructor):
+    Allocates new memory.
+    Copies actual content, not just the pointer.
+
+
