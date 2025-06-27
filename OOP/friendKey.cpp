@@ -14,6 +14,7 @@ public:
     Chai(string name, int serve) : teaName(name), servings(serve) {}
 
     friend bool compareServings(const Chai &chai1, const Chai &chai2);
+    //Same can be done using class
 
     void display() const
     {
@@ -25,6 +26,21 @@ bool compareServings(const Chai &chai1, const Chai &chai2)
 {
     return chai1.servings > chai2.servings;
 }
+
+// class A {
+// private:
+//     int data = 5;
+
+//     // Declare class B as a friend
+//     friend class B;
+// };
+
+// class B {
+// public:
+//     void display(A obj) {
+//         cout << "Accessing A's private data: " << obj.data << endl;
+//     }
+// };
 
 int main()
 {
