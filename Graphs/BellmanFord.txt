@@ -3,3 +3,21 @@ Bellman Ford
 2)Can be used with Directed graph with negative edges
 3)For undirected graph convert it to directed (No negative edge)
 4)Can detect negative cycles
+
+
+Concept  - i) If all the edges will be relaxed V-1 times the path obtained will be shortest
+ii)Relax  - less costly path is obtained
+
+Code  - O(E*V)
+    for(int i=1;i<=V-1;i++){
+        for(auto &edge:edges){
+            int u=edge[0];
+            int v=edge[1];
+            int wt=edge[2];
+
+            if(r[u]!=INT_MAX && r[u]+wt<r[v]){
+                r[v]=r[u]+wt;
+            }
+
+        }
+    }
