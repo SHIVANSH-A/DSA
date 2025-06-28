@@ -107,3 +107,10 @@ auto lambda = [ ](int a){
 	return(a%2!=0);
 };
 
+
+
+*sort
+sort(v.begin(),v.end())  - default sort v  in ascending order
+para1 - starting pointer (included)
+para2 - ending pointer (not included)
+v.end() - gives pointer after the lst valid index 
