@@ -130,3 +130,14 @@ ex - vector<int> v = {5, 1, 3, 2, 4};
 nth_element(v.begin(), v.begin() + 2, v.end()); // Default: ascending
 
 // Now v[2] is the 3rd smallest element (value 3), but rest is partially unordered
+
+
+*count
+count(begin, end, value);
+para1 - starting pointer (included)
+para2 - ending pointer (not included)
+return count of value occurred in range.
+
+
+
+NOTE -v.begin()+2 is index 2(third ele)
