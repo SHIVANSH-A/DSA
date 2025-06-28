@@ -116,3 +116,17 @@ para1 - starting pointer (included)
 para2 - ending pointer (not included)
 v.end() - gives pointer after the lst valid index 
 
+
+*nth_element
+nth_element(begin, nth, end, comp) 
+	begin: Start of range.
+	nth: The position you want to fix as if sorted.
+	end: End of range.
+	comp: Optional comparator (like greater<int>() or less<int>()).
+
+It will fix nth smallest element in nth index and to left all less elements and to rigth all greater elements.(Default)
+
+ex - vector<int> v = {5, 1, 3, 2, 4};
+nth_element(v.begin(), v.begin() + 2, v.end()); // Default: ascending
+
+// Now v[2] is the 3rd smallest element (value 3), but rest is partially unordered
