@@ -1,0 +1,5 @@
+Bellman Ford
+1)Used to find shortest path from src to given node
+2)Can be used with Directed graph with negative edges
+3)For undirected graph convert it to directed (No negative edge)
+4)Can detect negative cycles
