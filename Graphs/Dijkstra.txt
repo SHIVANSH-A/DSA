@@ -102,3 +102,6 @@ Dikstra's Algorithm
                     return result;
                 }
             };
+
+        NOTE - i)Can't work with negative edges 
+              ii)Can't detect negative cycles
