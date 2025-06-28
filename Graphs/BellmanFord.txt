@@ -21,3 +21,5 @@ Code  - O(E*V)
 
         }
     }
+
+Detecting negative cycles - Iterate one more time after V-1,if any edge is more relaxed then negative cycle is present.
