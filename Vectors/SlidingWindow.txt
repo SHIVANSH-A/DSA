@@ -1,0 +1,19 @@
+Sliding window
+Types of problems - templates
+
+1)Constant size window
+l and r - two pointers
+k - size of window
+
+//For maximum sum of k sized window
+
+l=0 ;
+r=k-1;
+//take sum = sum from l to r initially
+while(r<n){
+    sum-=arr[l];
+    l++;
+    r++;
+    sum+=arr[r];
+    maxsum = max(sum,maxsum);
+}
