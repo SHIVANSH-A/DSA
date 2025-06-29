@@ -17,3 +17,49 @@ while(r<n){
     sum+=arr[r];
     maxsum = max(sum,maxsum);
 }
+
+
+2)Longest subarray/substring (subarray-continuous)
+
+i)Brute force - Generate all possible subarrays
+
+for(i=0 to n-1){
+    for(j=i to n-1){
+        condition
+    }
+}
+
+
+ii)Better - Use sliding window  (O(N+N))
+l,r=0;
+while(r<n){
+    //normal opr according to condition (sum+=arr[r])
+
+    while(sum>k){//shrinking condition
+        //undo operation(sum-=arr[l])
+        l++;
+    }
+    if(sum<=k)
+    //desired output condition (maxlen = max(r-l+1,maxlen))
+
+    r++;//Growing condition
+}
+
+
+iii)Optimal - Can be used sometimes
+O(N)
+
+if in above ex max length of subarray is asked no need to shrink in while()
+l,r=0;
+while(r<n){
+    //normal opr according to condition (sum+=arr[r])
+
+    if(sum>k){//shrinking condition - only to shrink one place and check next as don't need to reduce maxlen(ex- if max len 3 then no need to check 2)
+        //undo operation(sum-=arr[l])
+        l++;
+    }
+    if(sum<=k)
+    //desired output condition (maxlen = max(r-l+1,maxlen))
+
+    r++;//Growing condition
+}
