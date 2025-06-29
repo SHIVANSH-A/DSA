@@ -63,3 +63,11 @@ while(r<n){
 
     r++;//Growing condition
 }
+
+
+3)No. of subaarays
+
+Use pattern 2 but sometimes need little modi.
+
+ex- No. of subarrays with sum k
+find for sum1<=k then sum2<=k-1 then sum1-sum2. 
