@@ -1,0 +1,17 @@
+Dynamic Programming
+
+i)Overlapping problem (Recursion)
+
+Certain values are recomputed many times which overlaps that can be stored
+ex-Fibonacci
+              f(5)
+         ↙    ↘
+      f(4)   f(3)
+      ↙  ↘
+   f(3)=2 f(2)
+   ↙   ↘
+f(2)=1  f(1)
+↙   ↘
+f(1) f(0)
+Like in this case f(2),f(3) is computed one time but f(4) will again call f(2) and it will again call subsequent functions.
+That's Overlapping. 
