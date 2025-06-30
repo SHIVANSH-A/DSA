@@ -21,6 +21,24 @@ ii)Memoization - Tends to store the value of subproblems in table/map.
 Thus no need to recompute.
 
 Steps -  1)Declare dp data structure(array/map).
-         2)At each subproblems call store the value.
+         2)At each subproblems call ,store the value.
          3)Check that if the value of subproblems is stored or not.If already stored, directly take from there no need of calling again.
-         
+
+
+ex - Fibonacci
+
+f(int n,vector<int> &dp){
+    if(n<=1) return n;
+
+    if(dp[n]!=-1) return dp[n];
+
+    return dp[n] = f(n-1) + f(n-2);
+
+}
+
+int main(){
+    vector<int> dp(n+1,-1);
+
+    cout<<f(n,dp);
+    return 0;
+}
