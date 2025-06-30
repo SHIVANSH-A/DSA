@@ -42,3 +42,9 @@ int main(){
     cout<<f(n,dp);
     return 0;
 }
+
+
+TC - O(n) 
+Previous - O(2^n)
+
+SC - O(n+n) //call stack + dp[]
