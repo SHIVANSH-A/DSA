@@ -74,3 +74,8 @@ find for sum1<=k then sum2<=k-1 then sum1-sum2.
 
 4)Shortest window
 Use pattern 2 but when a valid window is obtained try to shrink according to condition.
+
+
+5)Tracking first element within window
+Use pattern 2 with queue.
+
