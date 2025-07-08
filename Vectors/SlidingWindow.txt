@@ -79,3 +79,28 @@ Use pattern 2 but when a valid window is obtained try to shrink according to con
 5)Tracking first element within window
 Use pattern 2 with queue.
 
+ex - Given an array arr[]  and a positive integer k, find the first negative integer for each and every window(contiguous subarray) of size k.
+Note: If a window does not contain a negative integer, then return 0 for that window.
+
+vector<int> firstNegInt(vector<int>& arr, int k) {
+        // write code here
+        int n = arr.size();
+        int i = 0;
+        int j = 0;
+        queue<int> q;
+        vector<int> r;
+        
+        while(j<n){
+            if(arr[j]<0) q.push(arr[j]);
+            if(j-i+1==k){
+                if(!q.empty()){
+                    r.push_back(q.front());
+                    if(q.front()==arr[i]){
+                        q.pop();
+                    }
+                }else r.push_back(0);
+                i++;
+            }
+            j++;
+        }
+        
