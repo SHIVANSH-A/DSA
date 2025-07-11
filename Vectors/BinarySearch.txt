@@ -1,0 +1,2 @@
+Binary Search 
+Searching when the data is sorted.
