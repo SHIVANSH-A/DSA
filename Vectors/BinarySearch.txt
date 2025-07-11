@@ -28,4 +28,9 @@ Code - i)Iterative
             }
 
 Time Complexity - O(Log2N) //As after each iteration search space is divided into half.
+
+
+Overflow - When search space is of INT_MAX , calcularing mid using (l+r)/2 is not permissible as 2INT_MAX cannot be accomodated in int.
+         Solution: i)Using long long for mid
+                   ii) Using l + (r-l)/2 //INT_MAX-INT_MAX will be cancelled and no overflow without disturbing the formula.
         
