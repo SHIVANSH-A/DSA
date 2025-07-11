@@ -16,3 +16,15 @@ Code - i)Iterative
 
             return -1;
         }
+        ii)Recursive
+        f(a,target,l,r){
+            if(l<=r) return -1;
+                
+            int mid = l + (r-l)/2;
+
+            if(a[mid]==taregt) return mid;
+            else if(target<a[mid]) return f(a,target,l,mid-1);
+            return f(a,target,mid+1,r);
+            }
+
+        
