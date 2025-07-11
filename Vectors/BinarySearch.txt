@@ -27,4 +27,5 @@ Code - i)Iterative
             return f(a,target,mid+1,r);
             }
 
+Time Complexity - O(Log2N) //As after each iteration search space is divided into half.
         
