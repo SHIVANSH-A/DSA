@@ -60,6 +60,12 @@ DFS(undordered_map<int,vector<int>>,int u,vector<bool> &visited,vector<int> &res
 		}
 	}
 
+	/*for (int v = 0; v < adjMatrix[u].size(); v++) {
+        if (adjMatrix[u][v] == 1 && !visited[v]) {
+            DFS(adjMatrix, v, visited, results);
+        }
+    }*/
+
 }
 
 
@@ -120,7 +126,7 @@ bool isCycleDFS(vector<int> adj[], int u, vector<bool>& visited,int parent){
 }
 
 
-BFS(If the next node is not parent also it is visited then cylce is present and use        queue with pair here for storing parent)
+BFS(If the next node is not parent also it is visited then cylce is present and use queue with pair here for storing parent)
 vector<bool> visited(V, false); 
 	for(int i = 0; i<V; i++) { 
 		if(!visited[i] && isCycleDFS(adj, i, visited)) { 
@@ -135,7 +141,7 @@ bool isCycleBFS(vector<int> adj[], int u, vector<bool>& visited) {
 	que.push({u, -1}); 
 	visited[u] = true; 
 	while(!que.empty()) { 
-		pair<int, int> P que.front(); 
+		pair<int, int> P =que.front(); 
 		que.pop(); 
 		int source = P.first; 
 		int parent = P.second; 
