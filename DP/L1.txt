@@ -51,7 +51,7 @@ SC - O(n+n) //call stack + dp[]
 
 
 iii)Tabulation - Bottom-up approach (Consider base case then go up)
-Concept - Calculate base case subproblems then use them to calculate upper problems withour recursion.
+Concept - Calculate base case subproblems then use them to calculate upper problems without recursion.
 
 ex- dp[0] = 0;
     dp[1] = 1;
