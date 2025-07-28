@@ -9,3 +9,10 @@ NOT (~) -> I) IT WILL FLIP THE BITS
 	   II) THEN IF NEGATIVE IT WILL STORE ITS 2'S COMPLEMENT ELSE STOP
 LARGEST INTEGER - (2^31 - 1)
 MINIMUM INTE - -2^31
+
+Counting no.of ones
+while(temp>0){
+                int lastBit = temp & 1;
+                if(lastBit == 1)count++;
+                temp>>=1; 
+            }
