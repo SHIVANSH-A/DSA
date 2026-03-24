@@ -8,7 +8,7 @@ class Solution {
         int n1 = m-l+1;
         int n2 = r-m;
         
-        vector<int> a1(n1);
+        vector<int> a1(n1); //Making two arrays which will be merged with sorting
         vector<int> a2(n2);
         int k=l;
         for(int i=0;i<n1;i++){
@@ -22,7 +22,8 @@ class Solution {
         
         int i=0,j=0;
         k=l;
-        while(i<n1 && j<n2){
+        //Fill the bigger array with two divided arrays
+        while(i<n1 && j<n2){ //When any index out of bound - stop
             if(a1[i]<a2[j]){
                 arr[k] = a1[i];
                 i++;
