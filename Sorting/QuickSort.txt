@@ -1,0 +1,35 @@
+Concept - i) Partition the array be pivot index
+        ii) Pivot element take as last element - Fix the position of pivot element at pivot index such that on left all ele are small than pivot ele and on right greater.
+            Logic of fixing position of pivot index (pi)  - Iterate over array until last and swap ele and ele at pivot idx when ele is less than or equal to pivot ele
+        iii)QuickSort - Recursion on left and right og pivot idx.
+
+Code -  
+class Solution {
+  public:
+    void quickSort(vector<int>& arr, int l, int r) {
+        // code here
+        if(l>=r) return;
+        
+        int pi = partition(arr,l,r); // Finding pivot idx
+        quickSort(arr,l,pi-1);
+        quickSort(arr,pi+1,r);
+    }
+
+  public:
+    int partition(vector<int>& arr, int l, int r) {
+        int p_ele = arr[r]; //Take as last ele
+        int pi = l; //Initial pi is lefmost idx
+        for(int i=l;i<r;i++){
+            if(arr[i]<=p_ele){
+                swap(arr[i],arr[pi]);
+                pi++;
+            }
+        }
+        
+        swap(arr[pi],arr[r]);
+        
+        return pi;
+        // code here
+        
+    }
+};             
