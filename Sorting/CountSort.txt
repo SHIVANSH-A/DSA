@@ -1,0 +1,58 @@
+Concept - i)Used when range is known
+         ii)Make map and store frequency of each ele
+        iii)Then run loop from minimum to maximum ele
+        iv)Add ele in array on the basis of frequency
+
+Code-class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        
+        // Step 1: Create a frequency map
+        unordered_map<int, int> mp;
+        for (int &num : nums) {
+            mp[num]++;   // count occurrences of each number
+        }
+
+        // Step 2: Find minimum and maximum element
+        int minE = *min_element(nums.begin(), nums.end());
+        int maxE = *max_element(nums.begin(), nums.end());
+
+        // Step 3: Reconstruct the sorted array
+        int i = 0;  // index for placing elements in nums
+
+        // Traverse from min to max
+        for (int num = minE; num <= maxE; num++) {
+            
+            // Place each number as many times as it appears
+            while (mp[num] > 0) {
+                nums[i] = num;   // fill array in sorted order
+                i++;
+                mp[num]--;       // decrease frequency
+            }
+        }
+
+        return nums;
+    }
+};
+For alphabets
+class Solution {
+  public:
+    string countSort(string s) {
+        // code here
+        unordered_map<char,int> mpp;
+        
+        for(auto &i:s){
+            mpp[i]++;
+        }
+        int j = 0;
+        for(int i=0;i<26;i++){
+            while(mpp[char('a'+i)]>0){
+                s[j] = char('a'+i);
+                j++;
+                mpp[char('a'+i)]--;
+            }
+        }
+        
+        return s;
+    }
+};
