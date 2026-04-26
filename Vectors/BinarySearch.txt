@@ -1,5 +1,6 @@
 Binary Search 
 Searching when the data is sorted.
+Whenever we encounter maximize the minimum or vice versa.
 
 Code - i)Iterative
         f(a,target){
