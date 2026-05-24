@@ -1,0 +1,30 @@
+Basics
+1)Variable - container
+2)Identifiers - name of Variable,function,class
+    Rules - 0-9,a-z,A-Z,_
+            case sensitive
+3)Keywords- reserved
+
+
+4)Operators - +,-,*,/,//(floor division),%,**(exp),assignmenet operators(=,+=,etc.),
+             comparison operators(==,>,etc.),logical operators(and,or,not),
+             identity operators(is,is not),membership operators(in,not in),bitwise
+
+5)Data type - type(var)
+    i)Numeric - int,float,complex
+    ii)String - str
+    iii)bool - True,False
+    iv) None
+
+6)Input - var = input()  (default - str)
+7)Output - print(f"name - {var}")  , print("name" + var + ".") here var has to be str
+8)Control 
+    i)if else - if,elif,else
+    ii)ternary - result=a if(condition) else b
+
+9)Loop 
+    i)while - while(condition):
+    ii)for 
+        a)for i in structure:
+        b)for i in range:  (range(start(inclusive),end(excluding),step))
+10)Function - def func1(parameters):
