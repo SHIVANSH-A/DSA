@@ -28,3 +28,9 @@ Basics
         a)for i in structure:
         b)for i in range:  (range(start(inclusive),end(excluding),step))
 10)Function - def func1(parameters):
+
+
+11)Built in functions
+    i)lenght - len(var)
+    ii)max(a, b)        # maximum between two values
+      max(arr)         # maximum element in a list
