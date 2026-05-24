@@ -31,6 +31,7 @@ Basics
 
 
 11)Built in functions
-    i)lenght - len(var)
+    i)lenght - len(var) - string/list
     ii)max(a, b)        # maximum between two values
       max(arr)         # maximum element in a list
+    iii)min,sum
